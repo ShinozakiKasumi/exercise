@@ -1,0 +1,70 @@
+\chapter{解三角形}
+\setcounter{choicecounter}{0} 
+
+\section{取值范围}
+\subsection{知识回顾}
+解决问题的第一步，是将题目中多变量换成单变量. 这是化繁为简、确立解题方向的关键.
+\begin{itemize}
+	\item \textbf{若表达式含边或边的比例}，优先考虑使用\textbf{正弦定理} ($a=2R\sin A, b=2R\sin B, \dots$)，将边长转化为对应角的正弦，实现“\textbf{边化角}”.
+	\item \textbf{若表达式含边的平方}，或已知条件为“两边一夹角” (SAS) / “三边” (SSS)，则\textbf{余弦定理}是构造关系式的不二之选. 
+	\item \textbf{利用内角和定理} $A+B+C=\pi$ 消去多余的角变量，是实现“变量化归”的最后一步.
+\end{itemize}
+
+牢记定义域，这是最关键也最容易被忽略的一步. 三角形中的角并非任意取值，其范围受到严格的内在约束. 忘记定义域，犹如脱缰之马，所得结论往往谬以千里.
+\begin{itemize}
+	\item \textbf{基本约束}：三角形的任意内角都必须在 $(0, \pi)$ 范围内.
+	\item \textbf{结构约束}：例如，若已将其他角用变量角 $B$ 表示为 $A=\frac{\pi}{2}-2B, C=\frac{\pi}{2}+B$，则必须同时满足 $B>0, A>0, C>0$，即
+	$\begin{cases} B>0 \\ \frac{\pi}{2}-2B>0 \\ \frac{\pi}{2}+B>0 \end{cases}$
+	解出这些不等式组，才能得到 $B$ 的最终有效范围.
+	\item \textbf{附加约束}：题目若明确指出是“锐角三角形”、“钝角三角形”等，则需要增加所有角小于 $\frac{\pi}{2}$ 或某个角大于 $\frac{\pi}{2}$ 的限制条件.
+\end{itemize}
+
+完成前两步后，问题就从一个复杂的几何问题，转化为了我们极为熟悉的、求函数在特定区间上最值的常规问题. 此时，我们有多种工具可供选择.
+\begin{itemize}
+	\item \textbf{辅助角公式}：对于形如 $y=a\sin x + b\cos x$ 的函数，此法是首选.
+	\item \textbf{二次函数配方法}：对于形如 $y=a\sin^2 x + b\sin x + c$ 的函数，可通过换元法转化为二次函数在闭区间上的最值问题.
+	\item \textbf{求导}：对于更复杂的三角函数，求导是判断其单调性、寻找极值点的最通用、最强大的方法.
+\end{itemize}
+
+\subsection{习题集}
+\subsubsection{取值范围}
+\begin{exercise}[2022 年全国新高考 I 卷第 18 题]
+	记 $\triangle ABC$ 的内角 $A,B,C$ 的对边分别为 $a,b,c$, 已知 $\frac{\cos A}{1+\sin A} = \frac{\sin 2B}{1+\cos 2B}$.
+	\begin{enumerate}
+		\item[(1)] 若 $C = \frac{2\pi}{3}$, 求 $B$;
+		\item[(2)] 求 $\frac{a^2+b^2}{c^2}$ 的最小值.
+	\end{enumerate}
+\end{exercise}
+
+\begin{exercise}[2023 年衡水中学第三次综合素养评价第 18 题]
+	已知在 $\triangle ABC$ 的内角 $A,B,C$ 所对边分别为 $a,b,c$, 且 $a=b+2b\cos C$.
+	\begin{enumerate}
+		\item[(1)] 求证: $C=2B$;
+		\item[(2)] 求 $\frac{a+c}{b}$ 的取值范围.
+	\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+	已知 $\triangle ABC$ 的面积为 $S$, 角 $A,B,C$ 所对的边分别为 $a,b,c$.点 $O$ 为 $\triangle ABC$ 的内心, $b = 2\sqrt{3}$ 且 $S = \frac{\sqrt{3}}{4}(a^2+c^2-b^2)$.
+	\begin{enumerate}
+		\item[(1)] 求 $B$ 的大小;
+		\item[(2)] 求 $\triangle AOC$ 的周长的取值范围.
+	\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+	在锐角 $\triangle ABC$ 中, 角 $A, B, C$ 所对应的边分别为 $a, b, c$, 已知 $\frac{\sin A - \sin B}{\sqrt{3}a - c} = \frac{\sin C}{a+b}$.
+	\begin{enumerate}
+		\item[(1)] 求角 $B$ 的值;
+		\item[(2)] 若 $a=2$, 求 $\triangle ABC$ 的周长的取值范围.
+	\end{enumerate}
+\end{exercise}
+
+\subsubsection{面积问题}
+\begin{exercise}[2023 浙江省十校联盟第三次联考第 18 题]
+	在 $\triangle ABC$ 中, $D$ 为边 $BC$ 上一点, $DC = 3, AD = 5, AC = 7, \angle DAC = \angle ABC$.
+	\begin{enumerate}
+		\item[(1)] 求 $\angle ADC$ 的大小;
+		\item[(2)] 求 $\triangle ABC$ 的面积.
+	\end{enumerate}
+\end{exercise}

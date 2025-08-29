@@ -1,0 +1,469 @@
+\section{解三角形}
+\subsection{取值范围}
+
+\subsubsection{习题1}
+\begin{solution}
+	本题的核心数学对象是 $\triangle ABC$，回顾我们所学的知识，一个三角形的\textbf{形状}由其三个内角 $A, B, C$ 决定.由于内角和为 $\pi$，即 $A+B+C=\pi$，，是为其一之约束，因此，一个三角形的形状本质上只有 \textbf{2 个自由度}.我们可以选择任意两个角（例如 $A$ 和 $B$）作为独立的参数，第三个角 $C$ 便随之确定.
+	
+	题目给出的条件 $\frac{\cos A}{1+\sin A} = \frac{\sin 2B}{1+\cos 2B}$ 是一个满足式条件，而我们的首要任务，就是将这个不咋好看的等式，翻译成一个关于角 $A, B$ 的更简洁的关系式.
+	
+	因此，我们化简下原式，在等式左边，利用半角公：
+	\[
+	\frac{\cos A}{1+\sin A} = \frac{\sin(\frac{\pi}{2}-A)}{1+\cos(\frac{\pi}{2}-A)} = \frac{2\sin(\frac{\pi}{4}-\frac{A}{2})\cos(\frac{\pi}{4}-\frac{A}{2})}{2\cos^2(\frac{\pi}{4}-\frac{A}{2})} = \tan\left(\frac{\pi}{4}-\frac{A}{2}\right)
+	\]
+	等式右边，利用二倍角公式：
+	\[
+	\frac{\sin 2B}{1+\cos 2B} = \frac{2\sin B \cos B}{1+(2\cos^2 B-1)} = \frac{2\sin B \cos B}{2\cos^2 B} = \tan B
+	\]
+	因此：
+	\[
+	\tan\left(\frac{\pi}{4}-\frac{A}{2}\right) = \tan B
+	\]
+	由于 $A, B \in (0, \pi)$, 可知 $\frac{\pi}{4}-\frac{A}{2} \in (-\frac{\pi}{4}, \frac{\pi}{4})$.在各自的定义域内，正切函数是单调的，故：
+	\[
+	\frac{\pi}{4}-\frac{A}{2} = B \quad \implies \quad A+2B = \frac{\pi}{2}
+	\]
+	这个简洁的关系，就是原复杂三角等式背后隐藏的约束.它将三角形形状的 2 个自由度削减为了 \textbf{1 个自由度}.接着，我们只需要确定一个角，整个三角形的形状就完全确定了.
+	
+	\textbf{对于第 (1) 问：}
+	题目给出了构造式条件 $C = \frac{2\pi}{3}$，这提供了消除最后一个自由度的信息.我们现在有两个关于 $A, B, C$ 的线性约束：
+	\begin{align*}
+		A+B+C &= \pi \quad  \\
+		A+2B \qquad &= \frac{\pi}{2} \quad 
+	\end{align*}
+	将 $C=\frac{2\pi}{3}$ 代入第一个式子，得到 $A+B = \frac{\pi}{3}$.联立方程组：
+	\[
+	\begin{cases}
+		A+2B = \frac{\pi}{2} \\
+		A+B = \frac{\pi}{3}
+	\end{cases}
+	\]
+	解得 $B = \frac{\pi}{6}$.至此，三角形的所有角都被唯一确定，问题解决.
+	
+	\textbf{对于第 (2) 问：}
+	此问没有给出额外条件，因此我们需要在由 $A+2B=\frac{\pi}{2}$ 所确定的\textbf{所有可能}的三角形形状中，寻找目标表达式的最小值.这正是用自由度参数表达并求解思想的用武之地.
+	
+	我们选择角 $B$ 作为描述三角形形状的唯一自由参数.其他角可以用 $B$ 表示：
+	\begin{align*}
+		A &= \frac{\pi}{2}-2B \\
+		C &= \pi - (A+B) = \pi - \left(\left(\frac{\pi}{2}-2B\right)+B\right) = \frac{\pi}{2}+B
+	\end{align*}
+	为了使 $\triangle ABC$ 成立，所有内角必须为正：
+	\[
+	A > 0 \implies \frac{\pi}{2}-2B > 0 \implies B < \frac{\pi}{4}
+	\]
+	\[
+	B > 0 \quad \text{且} \quad C = \frac{\pi}{2}+B > 0 \quad (\text{当 } B>0 \text{ 时恒成立})
+	\]
+	综上，自由参数 $B$ 的取值范围是 $(0, \frac{\pi}{4})$.
+	
+	目标函数是 $\frac{a^2+b^2}{c^2}$.利用正弦定理，将其从边长语言翻译为角度语言：
+	\[
+	\frac{a^2+b^2}{c^2} = \frac{\sin^2 A + \sin^2 B}{\sin^2 C}
+	\]
+	将所有角用参数 $B$ 代入：
+	\[
+	f(B) = \frac{\sin^2(\frac{\pi}{2}-2B) + \sin^2 B}{\sin^2(\frac{\pi}{2}+B)} = \frac{\cos^2(2B) + \sin^2 B}{\cos^2 B}
+	\]
+	问题转化为：求函数 $f(B)$ 在区间 $B \in (0, \frac{\pi}{4})$ 上的最小值.
+	
+	为了简化计算，我们进行变量代换.这是一个典型的换元法应用，其本质是将问题从三角函数空间映射到更易于处理的代数空间.
+	令 $x = \sin^2 B$.
+	由于 $B \in (0, \frac{\pi}{4})$, 新变量 $x$ 的取值范围是 $(0, \sin^2(\frac{\pi}{4})) = (0, \frac{1}{2})$.
+	我们将 $f(B)$ 的表达式完全用 $x$ 来表示：
+	\[
+	\cos^2 B = 1-\sin^2 B = 1-x \quad \text{且} \quad \cos(2B) = 1-2\sin^2 B = 1-2x
+	\]
+	代入得到关于 $x$ 的函数 $g(x)$:
+	\[
+	g(x) = \frac{(1-2x)^2+x}{1-x} = \frac{4x^2-3x+1}{1-x}
+	\]
+	为求 $g(x)$ 在区间 $(0, \frac{1}{2})$ 上的最小值，我们对其求导：
+	\[
+	g'(x) = \frac{(8x-3)(1-x) - (4x^2-3x+1)(-1)}{(1-x)^2} = \frac{-4x^2+8x-2}{(1-x)^2}
+	\]
+	令 $g'(x)=0$, 即 $2x^2-4x+1 = 0$.解得 $x = 1 \pm \frac{\sqrt{2}}{2}$.
+	考虑到定义域 $x \in (0, \frac{1}{2})$，我们取驻点 $x_0 = 1 - \frac{\sqrt{2}}{2}$.
+	分析可知，当 $x \in (0, x_0)$ 时，$g'(x)<0$；当 $x \in (x_0, \frac{1}{2})$ 时，$g'(x)>0$.因此 $g(x)$ 在 $x=x_0$ 处取得最小值.
+	将 $x_0 = 1 - \frac{\sqrt{2}}{2}$ 代入 $g(x)$.为简化计算，先对 $g(x)$ 进行代数变形：
+	\[
+	g(x) = \frac{-4x(1-x)+(x-1)+2}{1-x} = -4x-1+\frac{2}{1-x}
+	\]
+	最小值为：
+	\begin{align*}
+		g\left(1 - \frac{\sqrt{2}}{2}\right) &= -4\left(1-\frac{\sqrt{2}}{2}\right) - 1 + \frac{2}{1-\left(1-\frac{\sqrt{2}}{2}\right)} \\
+		&= -4 + 2\sqrt{2} - 1 + \frac{2}{\frac{\sqrt{2}}{2}} \\
+		&= -5 + 2\sqrt{2} + 2\sqrt{2} \\
+		&= 4\sqrt{2}-5
+	\end{align*}\hfill\qedsymbol
+\end{solution}
+
+\subsubsection{习题2}
+\begin{solution}
+	题目给出的核心约束是关于边和角的满足式条件”$a=b+2b\cos C$.为了得到我们想要的关系，我们先利用正弦定理翻译起手，目的是将边长关系翻译为角度关系.
+	
+	由正弦定理，设 $a=k\sin A, b=k\sin B, c=k\sin C$.代入原式得：
+	\[
+	k\sin A = k\sin B + 2k\sin B \cos C
+	\]
+	由于 $k \neq 0$, 两边同除以 $k$ 得：
+	\[
+	\sin A = \sin B + 2\sin B \cos C
+	\]
+	在 $\triangle ABC$ 中, $A = \pi-(B+C)$, 故 $\sin A = \sin(\pi-(B+C)) = \sin(B+C)$.代入上式：
+	\[
+	\sin(B+C) = \sin B + 2\sin B \cos C
+	\]
+	展开左侧：
+	\[
+	\sin B \cos C + \cos B \sin C = \sin B + 2\sin B \cos C
+	\]
+	移项整理得：
+	\[
+	\cos B \sin C - \sin B \cos C = \sin B
+	\]
+	左侧恰为差角公式，即 $\sin(C-B) = \sin B$.
+	
+	由于 $B,C$ 均为三角形内角，故 $B \in (0,\pi), C \in (0,\pi)$.同时 $B+C \in (0,\pi)$, 可得 $C-B \in (-\pi, \pi)$.
+	由 $\sin(C-B)=\sin B$ 可得两种可能：
+	\begin{itemize}
+		\item $C-B = B$, 即 $C=2B$.
+		\item $C-B = \pi - B$, 即 $C=\pi$.矛盾.
+	\end{itemize}
+	因此， $C=2B$.至此，第 (1) 问得证.
+	
+	第 (1) 问的结论 $C=2B$ 极大地简化了问题，它将三角形形状的自由度从 2 降至 1.我们可以选择角 $B$ 作为唯一的自由参数来描述所有满足条件的三角形.
+	
+	首先，我们将所有角用参数 $B$ 表示，也即所谓的选定变量，或者说是归一思想：
+	\[
+	C=2B, \quad A = \pi - (B+C) = \pi - 3B
+	\]
+	为保证 $A,B,C$ 构成一个三角形，所有内角必须为正：
+	\begin{align*}
+		B &> 0 \\
+		C = 2B &> 0 \quad (\text{当 } B>0 \text{ 时恒成立}) \\
+		A = \pi - 3B &> 0 \implies 3B < \pi \implies B < \frac{\pi}{3}
+	\end{align*}
+	综上，自由参数 $B$ 的取值范围是 $(0, \frac{\pi}{3})$.
+	
+	目标函数为 $\frac{a+c}{b}$.我们再次利用正弦定理，将其翻译为角度的表达式：
+	\[
+	\frac{a+c}{b} = \frac{k\sin A + k\sin C}{k\sin B} = \frac{\sin A + \sin C}{\sin B}
+	\]
+	将所有角用参数 $B$ 代入：
+	\[
+	f(B) = \frac{\sin(\pi-3B)+\sin(2B)}{\sin B}
+	\]
+	由于 $B \in (0, \frac{\pi}{3})$, $\sin B \neq 0$，我们可以进行化简：
+	\[
+	f(B) = \frac{\sin(3B)+\sin(2B)}{\sin B}
+	\]
+	利用和差化积公式或三倍角、二倍角公式展开.这里使用后者更为直接：
+	\begin{align*}
+		f(B) &= \frac{(3\sin B - 4\sin^3 B) + (2\sin B \cos B)}{\sin B} \\
+		&= 3 - 4\sin^2 B + 2\cos B
+	\end{align*}
+	
+	为了求 $f(B)$ 的范围，我们将其转化为关于单一三角函数变量的代数式.
+	令 $t = \cos B$.首先确定新变量 $t$ 的范围.
+	因为 $B \in (0, \frac{\pi}{3})$ 且 $y=\cos x$ 在此区间上单调递减，所以：
+	\[
+	t = \cos B \in \left(\cos\frac{\pi}{3}, \cos 0\right) = \left(\frac{1}{2}, 1\right)
+	\]
+	将原表达式中的 $\sin^2 B$ 替换为 $1-\cos^2 B = 1-t^2$：
+	\begin{align*}
+		g(t) &= 3 - 4(1-t^2) + 2t \\
+		&= 3 - 4 + 4t^2 + 2t \\
+		&= 4t^2 + 2t - 1
+	\end{align*}
+	问题最终转化为：求二次函数 $g(t) = 4t^2+2t-1$ 在开区间 $t \in (\frac{1}{2}, 1)$ 上的值域.
+	
+	这是一个开口向上的抛物线，对称轴为 $t = -\frac{2}{2 \times 4} = -\frac{1}{4}$.
+	由于区间 $(\frac{1}{2}, 1)$ 完全位于对称轴的右侧，所以函数 $g(t)$ 在此区间上是严格单调递增的.
+	
+	因此，值域的边界由区间端点决定：
+	\begin{itemize}
+		\item 当 $t \to \frac{1}{2}^+$ 时, $g(t) \to 4(\frac{1}{2})^2 + 2(\frac{1}{2}) - 1 = 1+1-1=1$.
+		\item 当 $t \to 1^-$ 时, $g(t) \to 4(1)^2 + 2(1) - 1 = 4+2-1=5$.
+	\end{itemize}
+	由于 $t$ 的取值范围是开区间，所以函数值的范围也是开区间.
+	
+	最终，$\frac{a+c}{b}$ 的取值范围是 $(1, 5)$.\hfill\qedsymbol
+\end{solution}
+
+\subsubsection{习题3}
+\begin{solution}
+	本题通过一个面积与边长的关系式来约束三角形的形状.我们的策略是利用面积公式、余弦定理来翻译这个关系式，从而确定一个内角.
+	
+	\textbf{1. 求角$B$.}
+	一方面，三角形的面积公式为：
+	\[
+	S = \frac{1}{2}ac\sin B
+	\]
+	另一方面，题目给出的条件 $S = \frac{\sqrt{3}}{4}(a^2+c^2-b^2)$ 中，括号内的项 $a^2+c^2-b^2$ 与余弦定理结构相似.
+	由余弦定理，$b^2 = a^2+c^2 - 2ac\cos B$, 可得：
+	\[
+	a^2+c^2-b^2 = 2ac\cos B
+	\]
+	将此式代入题目给定的条件中：
+	\[
+	S = \frac{\sqrt{3}}{4}(2ac\cos B) = \frac{\sqrt{3}}{2}ac\cos B
+	\]
+	于是得到了关于面积 $S$ 的两个等价表达式，令它们相等：
+	\[
+	\frac{1}{2}ac\sin B = \frac{\sqrt{3}}{2}ac\cos B
+	\]
+	由于在三角形中 $a, c$ 均为正数，可约去 $\frac{1}{2}ac$:
+	\[
+	\sin B = \sqrt{3}\cos B
+	\]
+	因为 $B \in (0, \pi)$, $\cos B=0$ 时 $\sin B \neq 0$, 故 $\cos B \neq 0$.两边同除以 $\cos B$ 得：
+	\[
+	\tan B = \sqrt{3}
+	\]
+	考虑到 $B$ 是三角形内角，解得 $B = \frac{\pi}{3}$.
+	
+	\textbf{2. 求解 $\triangle AOC$ 周长的取值范围}
+	
+	第 (1) 问确定了角 $B$ 的大小，多了一个条件，方便我们弄出第二问，来看第二问，其目标对象是 $\triangle AOC$ 的周长，我们的思路是：先将周长表达为一个函数的形式，并确定其定义域，进而求出值域.
+	
+	点 $O$ 是 $\triangle ABC$ 的内心，即 $AO, CO$ 分别是 $\angle A$ 和 $\angle C$ 的角平分线.因此，在 $\triangle AOC$ 中：
+	\[
+	\angle OAC = \frac{A}{2}, \quad \angle OCA = \frac{C}{2}
+	\]
+	其第三个角为：
+	\[
+	\angle AOC = \pi - \left(\frac{A}{2} + \frac{C}{2}\right) = \pi - \frac{A+C}{2}
+	\]
+	由于我们已经求出 $B=\frac{\pi}{3}$, 所以 $A+C = \pi - B = \frac{2\pi}{3}$.代入上式，我们得到一个重要的定值：
+	\[
+	\angle AOC = \pi - \frac{2\pi/3}{2} = \pi - \frac{\pi}{3} = \frac{2\pi}{3}
+	\]
+	$\triangle AOC$ 的周长 $P = AO + CO + AC$.其中 $AC = b = 2\sqrt{3}$ 是已知定值.
+	
+	我们选择角 $A$ 作为唯一的自由参数.在 $\triangle AOC$ 中，应用正弦定理：
+	\[
+	\frac{AO}{\sin(\angle OCA)} = \frac{CO}{\sin(\angle OAC)} = \frac{AC}{\sin(\angle AOC)}
+	\]
+	\[
+	\frac{AO}{\sin(C/2)} = \frac{CO}{\sin(A/2)} = \frac{2\sqrt{3}}{\sin(2\pi/3)} = \frac{2\sqrt{3}}{\sqrt{3}/2} = 4
+	\]
+	由此解出 $AO = 4\sin(C/2)$ 和 $CO = 4\sin(A/2)$.
+	周长表达式为：
+	\[
+	P(A,C) = 4\sin(A/2) + 4\sin(C/2) + 2\sqrt{3}
+	\]
+	将 $C = \frac{2\pi}{3}-A$ 代入，得到关于单参数 $A$ 的函数：
+	\[
+	P(A) = 4\left[\sin\left(\frac{A}{2}\right) + \sin\left(\frac{2\pi/3-A}{2}\right)\right] + 2\sqrt{3} = 4\left[\sin\left(\frac{A}{2}\right) + \sin\left(\frac{\pi}{3}-\frac{A}{2}\right)\right] + 2\sqrt{3}
+	\]
+	
+	首先确定参数 $A$ 的范围.在 $\triangle ABC$ 中，各角需为正：
+	\[
+	A>0, \quad C = \frac{2\pi}{3}-A > 0 \implies A < \frac{2\pi}{3}
+	\]
+	故 $A \in (0, \frac{2\pi}{3})$.
+	
+	我们对括号内的三角函数部分进行化简，令其为 $g(A) = \sin(\frac{A}{2}) + \sin(\frac{\pi}{3}-\frac{A}{2})$.
+	利用和差化积公式：
+	\[
+	g(A) = 2\sin\left(\frac{A/2 + \pi/3-A/2}{2}\right)\cos\left(\frac{A/2 - (\pi/3-A/2)}{2}\right) = 2\sin\left(\frac{\pi}{6}\right)\cos\left(\frac{A-\pi/3}{2}\right)
+	\]
+	由于 $2\sin(\frac{\pi}{6}) = 2 \cdot \frac{1}{2} = 1$, 所以 $g(A) = \cos\left(\frac{A}{2}-\frac{\pi}{6}\right)$.
+	
+	现在求 $g(A)$ 的范围.因为 $A \in (0, \frac{2\pi}{3})$:
+	\[
+	\frac{A}{2} \in \left(0, \frac{\pi}{3}\right) \implies \frac{A}{2}-\frac{\pi}{6} \in \left(-\frac{\pi}{6}, \frac{\pi}{6}\right)
+	\]
+	余弦函数 $y=\cos x$ 在区间 $(-\frac{\pi}{6}, \frac{\pi}{6})$ 上是偶函数，且在该区间上从 $\cos(-\pi/6)=\frac{\sqrt{3}}{2}$ 减到 $\cos(0)=1$ 再增回 $\cos(\pi/6)=\frac{\sqrt{3}}{2}$.其值域为 $(\cos(\frac{\pi}{6}), \cos(0)] = (\frac{\sqrt{3}}{2}, 1]$.
+	所以 $g(A) \in (\frac{\sqrt{3}}{2}, 1]$.
+	
+	最终，周长 $P(A) = 4g(A) + 2\sqrt{3}$ 的取值范围是：
+	\[
+	\left(4 \cdot \frac{\sqrt{3}}{2} + 2\sqrt{3}, \quad 4 \cdot 1 + 2\sqrt{3}\right] = \left(2\sqrt{3} + 2\sqrt{3}, \quad 4 + 2\sqrt{3}\right] = \left(4\sqrt{3}, 4+2\sqrt{3}\right]
+	\]
+	故 $\triangle AOC$ 周长的取值范围是 $(4\sqrt{3}, 4+2\sqrt{3}]$.\hfill\qedsymbol
+\end{solution}
+
+\subsubsection{习题4}
+\begin{solution}
+	\textbf{1. 求角$B$.}
+	
+	题目给出的条件是一个混合了边与角的复杂比例式.我们的首要策略是利用正弦定理，将所有三角函数项统一替换为边长，从而将问题转化为纯粹的代数关系式，以揭示约束条件.
+	
+	由正弦定理，$\sin A = \frac{a}{2R}, \sin B = \frac{b}{2R}, \sin C = \frac{c}{2R}$.代入原式：
+	\[
+	\frac{\frac{a}{2R} - \frac{b}{2R}}{\sqrt{3}a - c} = \frac{\frac{c}{2R}}{a+b}
+	\]
+	消去公因式 $\frac{1}{2R}$，我们得到：
+	\[
+	\frac{a-b}{\sqrt{3}a - c} = \frac{c}{a+b}
+	\]
+	通过交叉相乘，将比例式转化为等式：
+	\[
+	(a-b)(a+b) = c(\sqrt{3}a - c)
+	\]
+	展开得：
+	\[
+	a^2 - b^2 = \sqrt{3}ac - c^2
+	\]
+	移项，整理成余弦定理的形式：
+	\[
+	a^2 + c^2 - b^2 = \sqrt{3}ac
+	\]
+	根据余弦定理，我们知道 $a^2 + c^2 - b^2 = 2ac\cos B$.于是：
+	\[
+	2ac\cos B = \sqrt{3}ac
+	\]
+	由于 $a,c$ 是三角形的边长，必为正数，可约去 $2ac$：
+	\[
+	\cos B = \frac{\sqrt{3}}{2}
+	\]
+	因为 $B$ 是三角形内角，所以 $B = \frac{\pi}{6}$.这个值满足锐角三角形中 $B \in (0, \frac{\pi}{2})$ 的要求.
+	
+	\textbf{2. 求解周长的取值范围}
+	
+	第 (1) 问固定了角 $B=\frac{\pi}{6}$，第 (2) 问又给定了边 $a=2$.此时，三角形的自由度仅剩一个.我们可以选择一个角（例如角 $A$）作为自由参数，来表达周长并确定其范围.
+	
+	我们选择角 $A$ 为参数.$\triangle ABC$ 是锐角三角形，因此所有角都必须在 $(0, \frac{\pi}{2})$ 内.
+	\begin{itemize}
+		\item $A \in (0, \frac{\pi}{2})$
+		\item $B = \frac{\pi}{6} \in (0, \frac{\pi}{2})$ 
+		\item $C = \pi - (A+B) = \pi - (A+\frac{\pi}{6}) = \frac{5\pi}{6} - A \in (0, \frac{\pi}{2})$
+	\end{itemize}
+	从 $C$ 的范围我们可以得到对 $A$ 的两个约束：
+	\begin{itemize}
+		\item $\frac{5\pi}{6} - A > 0 \implies A < \frac{5\pi}{6}$.此条件被 $A < \pi/2$ 包含.
+		\item $\frac{5\pi}{6} - A < \frac{\pi}{2} \implies \frac{5\pi}{6} - \frac{3\pi}{6} < A \implies A > \frac{2\pi}{6} = \frac{\pi}{3}$.
+	\end{itemize}
+	综上，参数 $A$ 的取值范围是 $(\frac{\pi}{3}, \frac{\pi}{2})$.
+	
+	确定完后，我们看看周长 $P = a+b+c = 2+b+c$，利用正弦定理将 $b,c$ 用参数 $A$ 表示.
+	\[
+	\frac{a}{\sin A} = \frac{b}{\sin B} = \frac{c}{\sin C} \implies \frac{2}{\sin A} = \frac{b}{\sin(\pi/6)} = \frac{c}{\sin(5\pi/6 - A)}
+	\]
+	解得：
+	\[
+	b = \frac{2\sin(\pi/6)}{\sin A} = \frac{1}{\sin A}
+	\]
+	\[
+	c = \frac{2\sin(5\pi/6 - A)}{\sin A}
+	\]
+	所以，周长 $P$ 是关于 $A$ 的函数：
+	\begin{align*}
+		P(A) &= 2 + \frac{1}{\sin A} + \frac{2\sin(5\pi/6 - A)}{\sin A} \\
+		&= 2 + \frac{1 + 2\left(\sin\frac{5\pi}{6}\cos A - \cos\frac{5\pi}{6}\sin A\right)}{\sin A} \\
+		&= 2 + \frac{1 + 2\left(\frac{1}{2}\cos A + \frac{\sqrt{3}}{2}\sin A\right)}{\sin A} \\
+		&= 2 + \frac{1 + \cos A + \sqrt{3}\sin A}{\sin A} \\
+		&= 2 + \frac{1+\cos A}{\sin A} + \sqrt{3}
+	\end{align*}
+	
+	化简，然后分析函数 $g(A) = \frac{1+\cos A}{\sin A}$.利用半角公式，简单期间，设$\cot A/2 = \frac{1}{\tan A/2}$，这里用到余切函数了，当然你换个元也是一样的效果.
+	\[
+	g(A) = \frac{2\cos^2(A/2)}{2\sin(A/2)\cos(A/2)} = \cot(A/2)
+	\]
+	因此，周长函数为 $P(A) = 2 + \sqrt{3} + \cot(A/2)$.
+	
+	注意道当 $A \in (\frac{\pi}{3}, \frac{\pi}{2})$ 时，
+	\[
+	A \in \left(\frac{\pi}{3}, \frac{\pi}{2}\right) \implies \frac{A}{2} \in \left(\frac{\pi}{6}, \frac{\pi}{4}\right)
+	\]
+	函数 $y = \cot x$ 在区间 $(\frac{\pi}{6}, \frac{\pi}{4})$ 上是单减.
+	因此，函数的值域由区间端点决定：
+	\begin{itemize}
+		\item 当 $\frac{A}{2} \to \frac{\pi}{6}^+$ 时，$\cot(\frac{A}{2}) \to \cot(\frac{\pi}{6}) = \sqrt{3}$.
+		\item 当 $\frac{A}{2} \to \frac{\pi}{4}^-$ 时，$\cot(\frac{A}{2}) \to \cot(\frac{\pi}{4}) = 1$.
+	\end{itemize}
+	所以，$\cot(A/2)$ 的取值范围是 $(1, \sqrt{3})$.
+	
+	综上，周长 $P(A) = 2+\sqrt{3} + \cot(A/2)$ 的取值范围是：
+	\[
+	\left(2+\sqrt{3} + 1, \quad 2+\sqrt{3} + \sqrt{3}\right) = \left(3+\sqrt{3}, 2+2\sqrt{3}\right)
+	\]
+	故 $\triangle ABC$ 周长的取值范围是 $(3+\sqrt{3}, 2+2\sqrt{3})$.\hfill\qedsymbol
+\end{solution}
+
+\subsection{面积问题}
+\subsubsection{习题5}
+\begin{solution}
+	\textbf{1. 求 $\angle ADC$}
+	
+	本题要我们求 $\triangle ADC$.题目直接给出了这个三角形的三条边长：$AD=5, DC=3, AC=7$.当一个三角形的三边确定时，其形状和所有内角也随之完全确定.
+	
+	先应用余弦定理来求解 $\angle ADC$.在 $\triangle ADC$ 中：
+	\[
+	AC^2 = AD^2 + DC^2 - 2(AD)(DC)\cos(\angle ADC)
+	\]
+	代入已知数据：
+	\[
+	7^2 = 5^2 + 3^2 - 2(5)(3)\cos(\angle ADC)
+	\]
+	\[
+	49 = 25 + 9 - 30\cos(\angle ADC)
+	\]
+	\[
+	49 = 34 - 30\cos(\angle ADC)
+	\]
+	整理得到：
+	\[
+	15 = -30\cos(\angle ADC) \implies \cos(\angle ADC) = -\frac{1}{2}
+	\]
+	由于 $\angle ADC$ 是三角形的内角，其范围为 $(0, \pi)$，因此 $\angle ADC = \frac{2\pi}{3}$.
+	
+	\textbf{2. 求 $\triangle ABC$ 面积}
+	
+	为求 $\triangle ABC$ 的面积，我们需要确定更多的边或角.关键在于利用连接两个三角形的条件 $\angle DAC = \angle ABC$.
+	
+	令 $\angle ABC = B$, 则 $\angle DAC = B$.
+	在 $\triangle ADC$ 中，我们已知三边和一角，可以利用正弦定理求出 $\sin B$：
+	\[
+	\frac{AC}{\sin(\angle ADC)} = \frac{DC}{\sin(\angle DAC)}
+	\]
+	\[
+	\frac{7}{\sin(2\pi/3)} = \frac{3}{\sin B} \implies \sin B = \frac{3\sin(2\pi/3)}{7} = \frac{3(\sqrt{3}/2)}{7} = \frac{3\sqrt{3}}{14}
+	\]
+	
+	现在我们的焦点转移到 $\triangle ABD$.
+	我们知道 $\angle ADC = \frac{2\pi}{3}$, 故其补角 $\angle ADB = \pi - \frac{2\pi}{3} = \frac{\pi}{3}$.
+	在 $\triangle ABD$ 中，我们已知：
+	\begin{itemize}
+		\item 边 $AD = 5$
+		\item 角 $\angle ABD = B$
+		\item 角 $\angle ADB = \frac{\pi}{3}$
+	\end{itemize}
+	第三个角为 $\angle BAD = \pi - B - \frac{\pi}{3} = \frac{2\pi}{3}-B$.
+	应用正弦定理于 $\triangle ABD$：
+	\[
+	\frac{AB}{\sin(\angle ADB)} = \frac{BD}{\sin(\angle BAD)} = \frac{AD}{\sin(\angle ABD)}
+	\]
+	\[
+	\frac{AB}{\sin(\pi/3)} = \frac{BD}{\sin(2\pi/3 - B)} = \frac{5}{\sin B}
+	\]
+	由此可解得边长 $BD$：
+	\[
+	BD = \frac{5\sin(2\pi/3 - B)}{\sin B}
+	\]
+	为计算此值，我们需要 $\cos B$.由于 $\triangle ABC$ 中 $D$ 在 $BC$ 边上，则 $C = \angle ACD$ 必为锐角（否则 $C+\angle ADC \ge \pi$），故 $\angle DAC = B$ 也必为锐角.因此 $\cos B > 0$.
+	\[
+	\cos B = \sqrt{1-\sin^2 B} = \sqrt{1 - \left(\frac{3\sqrt{3}}{14}\right)^2} = \sqrt{1-\frac{27}{196}} = \sqrt{\frac{169}{196}} = \frac{13}{14}
+	\]
+	展开 $\sin(2\pi/3 - B)$：
+	\begin{align*}
+		BD &= \frac{5(\sin(2\pi/3)\cos B - \cos(2\pi/3)\sin B)}{\sin B} \\
+		&= \frac{5((\sqrt{3}/2)(13/14) - (-1/2)(3\sqrt{3}/14))}{3\sqrt{3}/14} \\
+		&= \frac{5(13\sqrt{3}/28 + 3\sqrt{3}/28)}{3\sqrt{3}/14} = \frac{5(16\sqrt{3}/28)}{3\sqrt{3}/14} = \frac{5(4\sqrt{3}/7)}{3\sqrt{3}/14} = \frac{20\sqrt{3}}{7} \cdot \frac{14}{3\sqrt{3}} = \frac{40}{3}
+	\end{align*}
+	
+	接下来，计算面积即可，$\triangle ABC$ 的面积等于 $\triangle ABD$ 与 $\triangle ADC$ 的面积之和.
+	\[
+	S_{\triangle ADC} = \frac{1}{2}AD \cdot DC \sin(\angle ADC) = \frac{1}{2}(5)(3)\sin\left(\frac{2\pi}{3}\right) = \frac{15}{2} \cdot \frac{\sqrt{3}}{2} = \frac{15\sqrt{3}}{4}
+	\]
+	\[
+	S_{\triangle ABD} = \frac{1}{2}AD \cdot BD \sin(\angle ADB) = \frac{1}{2}(5)\left(\frac{40}{3}\right)\sin\left(\frac{\pi}{3}\right) = \frac{100}{3} \cdot \frac{\sqrt{3}}{2} = \frac{50\sqrt{3}}{3}
+	\]
+	总面积为：
+	\[
+	S_{\triangle ABC} = S_{\triangle ADC} + S_{\triangle ABD} = \frac{15\sqrt{3}}{4} + \frac{50\sqrt{3}}{3} = \sqrt{3}\left(\frac{45+200}{12}\right) = \frac{245\sqrt{3}}{12}
+	\]
+	故 $\triangle ABC$ 的面积为 $\frac{245\sqrt{3}}{12}$.\hfill\qedsymbol
+\end{solution}

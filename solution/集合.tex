@@ -1,0 +1,276 @@
+\section{集合和逻辑用语}
+
+\subsection*{A组}
+
+\subsubsection*{题目 1}
+\begin{solution}
+	\textbf{答案 C}
+	
+	本题考查全称量词命题与存在量词命题的否定关系.否定一个量词命题，遵循“改量词，否结论”的原则.
+	原命题 $p$ 为一个存在量词命题，其逻辑形式为 $\exists x \in M, P(x)$.
+	
+	其否定的一般形式为：
+	\[ \neg (\exists x \in M, P(x)) \iff \forall x \in M, \neg P(x) \]
+	在本题中，量词 $\exists$ (存在) 的否定是 $\forall$ (任意).
+	原结论 $P(x)$ 为 $x^2 \le 0$，其否定 $\neg P(x)$ 为 $x^2 > 0$.
+	
+	故 $\neg p$ 为 $\forall x \in \mathbb{N}, x^2 > 0$.
+\end{solution}
+
+\begin{note}
+	选项 D 中，$x^2 \ge 0$ 在自然数范围内是恒成立的，但它并非 $x^2 \le 0$ 的严格否定.一个结论的否定是其逻辑补集，而非简单的反义关系.对于实数 $y$，$y \le 0$ 的否定是 $y>0$.
+\end{note}
+
+\subsubsection*{题目 2}
+\begin{solution}
+	\textbf{答案 B}
+	
+	本题的核心思想是将抽象的集合运算转化为直观的数轴位置关系.
+	首先，根据集合 $A$ 的定义，确定其在全集 $U=\mathbb{R}$ 下的补集.
+	\[ A = \{x|x<2 \text{ 或 } x \ge 4\} = (-\infty, 2) \cup [4, +\infty) \]
+	其补集为数轴上未被覆盖的部分：
+	\[ \complement_U A = \{x|2 \le x < 4\} = [2, 4) \]
+	集合 $B$ 的定义为：
+	\[ B = \{x|x<a\} = (-\infty, a) \]
+	题目条件为 $(\complement_U A) \cap B \neq \emptyset$，即区间 $[2, 4)$ 与 $(-\infty, a)$ 的交集不为空.
+	为满足此条件，区间 $(-\infty, a)$ 的右端点 $a$ 必须大于区间 $[2,4)$ 的左端点 $2$.
+	因此，可得 $a > 2$.
+\end{solution}
+
+\subsubsection*{题目 3}
+\begin{solution}
+	\textbf{答案 D}
+	
+	解题分为两个步骤：首先确定交集 $A \cap B$ 的所有元素，然后利用子集个数公式求解.
+	
+	第一步，列举集合 $A$ 的所有元素.$A$ 的元素是满足 $xy=4$ 的整数坐标点 $(x,y)$.
+	\[ A = \{(1,4), (4,1), (-1,-4), (-4,-1), (2,2), (-2,-2)\} \]
+	第二步，从 $A$ 中筛选出满足集合 $B$ 条件 ($x \le y$) 的元素.
+	\[ A \cap B = \{(1,4), (-4,-1), (2,2), (-2,-2)\} \]
+	集合 $A \cap B$ 中含有 4 个元素.
+	
+	一个含有 $n$ 个元素的有限集合，其子集的个数为 $2^n$.
+	本题中 $n=4$，故子集个数为 $2^4 = 16$.
+\end{solution}
+
+\subsection*{B组}
+
+\subsubsection*{题目 4}
+\begin{solution}
+	\textbf{答案 D}
+	
+	本题考查充分条件与必要条件的判断.核心方法是将命题间的逻辑关系转化为集合间的包含关系：若 $p \Rightarrow q$，则 $p$ 对应的集合是 $q$ 对应集合的子集.
+	
+	A. “$A \cap B = B$” 等价于 $B \subseteq A$.“$B=\emptyset$” 能够推出 $B \subseteq A$，但反之不成立.因此，“$B \subseteq A$” 是 “$B=\emptyset$” 的必要不充分条件.该说法正确.
+	
+	B. “$x=3$” 对应集合 $\{3\}$.“$x^2-2x-3=0$” 对应解集 $\{3, -1\}$.因为 $\{3\} \subsetneq \{3, -1\}$，所以前者是后者的充分不必要条件.该说法正确.
+	
+	C. “$|x|=1$” 对应集合 $\{1, -1\}$.“$x=1$” 对应集合 $\{1\}$.因为 $\{1\} \subsetneq \{1, -1\}$，所以前者是后者的必要不充分条件.该说法正确.
+	
+	D. 命题 $p$: “$m$ 是有理数”，对应集合 $\mathbb{Q}$.命题 $q$: “$m$ 是实数”，对应集合 $\mathbb{R}$.因为 $\mathbb{Q} \subsetneq \mathbb{R}$，所以 $p$ 是 $q$ 的充分不必要条件.原说法颠倒了主次，故错误.
+\end{solution}
+
+\subsubsection*{题目 5}
+\begin{solution}
+	\textbf{答案 A}
+	
+	一个全称量词命题为假，其逻辑等价于它的否定形式（一个存在量词命题）为真.
+	设原命题为 $P: \forall x \in \mathbb{R}, 1-x^2 \le m$.
+	
+	由于命题 $P$ 为假，其否定命题 $\neg P$ 必为真.
+	\[ \neg P: \exists x \in \mathbb{R}, \neg(1-x^2 \le m) \implies \exists x \in \mathbb{R}, 1-x^2 > m \]
+	该存在量词命题为真，意味着 $m$ 必须小于函数 $f(x) = 1-x^2$ 的最大值.
+	函数 $f(x)=1-x^2$ 是一个开口向下的二次函数，其顶点为最大值点.
+	\[ f(x)_{\max} = f(0) = 1 \]
+	因此，实数 $m$ 的取值范围必须是 $m < 1$，即 $m \in (-\infty, 1)$.
+\end{solution}
+
+\subsubsection*{题目 6}
+\begin{solution}
+	\textbf{答案 B}
+	
+	命题“$p$ 是 $q$ 的充分不必要条件”包含两层含义，必须同时满足：
+	\begin{itemize}
+		\item \textbf{充分性}: $p \Rightarrow q$.
+		\item \textbf{不必要性}: $q \not\Rightarrow p$.
+	\end{itemize}
+	设 $p: x=2$，$q: m^2x^2 - (m+3)x + 4 = 0$.
+	
+	\textbf{检验充分性}:
+	将 $x=2$ 代入方程 $q$ 中，方程必须成立.
+	\[ 4m^2 - 2(m+3) + 4 = 0 \implies 2m^2 - m - 1 = 0 \]
+	因式分解得 $(2m+1)(m-1) = 0$，解得 $m=1$ 或 $m=-\frac{1}{2}$.
+	
+	\textbf{检验不必要性}:
+	方程 $q$ 的解集 $S$ 必须真包含 $\{2\}$，即 $S \neq \{2\}$.
+	\begin{itemize}
+		\item 当 $m=1$ 时，方程为 $x^2 - 4x + 4 = 0$，解集 $S=\{2\}$.此时 $q \Rightarrow p$ 成立，不满足“不必要”条件，故舍去.
+		\item 当 $m=-\frac{1}{2}$ 时，方程为 $\frac{1}{4}x^2 - \frac{5}{2}x + 4 = 0$，即 $x^2 - 10x + 16 = 0$.解集 $S=\{2, 8\}$.此时 $S \neq \{2\}$，满足“不必要”条件.
+	\end{itemize}
+	综上，唯一满足条件的实数 $m$ 的值为 $-\frac{1}{2}$.
+\end{solution}
+
+\subsubsection*{题目 7}
+\begin{solution}
+	\textbf{答案 D}
+	
+	条件 $\complement_U A = B$ 是解题的关键，它等价于以下两个条件同时成立：
+	\[ A \cup B = U \quad \text{且} \quad A \cap B = \emptyset \]
+	根据题意：
+	$U=\{1,2,3,4,5\}$
+	$A=\{1,a,b\}$
+	$B=\{4, a-b\}$
+	
+	由 $A \cup B = U$，可得：
+	\[ \{1,a,b\} \cup \{4, a-b\} = \{1, a, b, 4, a-b\} = \{1,2,3,4,5\} \]
+	比较两集合，可知无序集合 $\{a, b, a-b\}$ 必须与 $\{2,3,5\}$ 相等.
+	同时，集合 A 和 B 的元素必须满足互异性.
+	
+	我们通过分类讨论来寻找 $a,b$ 的取值：
+	\begin{itemize}
+		\item \textbf{情况一：} 设 $a=5, b=2$.则 $a-b = 3$.此时 $\{a,b,a-b\} = \{5,2,3\}$ 与 $\{2,3,5\}$ 匹配.
+		检验：$A=\{1,5,2\}, B=\{4,3\}$.此时 $\complement_U A = \{3,4\}=B$，符合题意.
+		\item \textbf{情况二：} 设 $a=5, b=3$.则 $a-b = 2$.此时 $\{a,b,a-b\} = \{5,3,2\}$ 与 $\{2,3,5\}$ 匹配.
+		检验：$A=\{1,5,3\}, B=\{4,2\}$.此时 $\complement_U A = \{2,4\}=B$，符合题意.
+	\end{itemize}
+	其他组合（如 $a=3,b=2$ 时 $a-b=1$,与$A$中元素重复）均不满足条件.
+	因此，$a,b$ 的值为 5,2 或 5,3.
+\end{solution}
+
+\subsection*{C组}
+
+\subsubsection*{题目 8}
+\begin{solution}
+	\textbf{答案 B}
+	
+	本题综合考查了新定义集合的理解、集合元素的互异性以及子集个数的计算.
+	
+	\textbf{1. 构造集合 $A \otimes B$}
+	根据定义，$A=\{n, -1\}, B=\{\sqrt{2}, 1\}$.
+	\[ A \otimes B = \{\sqrt{n^2 + (\sqrt{2})^2}, \sqrt{n^2 + 1^2}, \sqrt{(-1)^2 + (\sqrt{2})^2}, \sqrt{(-1)^2 + 1^2}\} \]
+	化简得：
+	\[ A \otimes B = \{\sqrt{n^2+2}, \sqrt{n^2+1}, \sqrt{3}, \sqrt{2}\} \]
+	
+	\textbf{2. 应用元素个数条件}
+	已知 $|A \otimes B| = 3$.由于上式给出了 4 个表达式，根据集合元素的互异性，其中必有两个表达式的值相等.
+	注意到 $\sqrt{n^2+2} > \sqrt{n^2+1}$ 且 $\sqrt{3} > \sqrt{2}$，因此相等的只可能是一个含 $n$ 的项与一个常数项.
+	
+	分类讨论：
+	\begin{itemize}
+		\item 若 $\sqrt{n^2+1} = \sqrt{2} \implies n^2=1 \implies n=\pm 1$.此时 $\sqrt{n^2+2}=\sqrt{3}$，集合为 $\{\sqrt{2}, \sqrt{3}\}$，仅有 2 个元素，不合题意.
+		\item 若 $\sqrt{n^2+1} = \sqrt{3} \implies n^2=2 \implies n=\pm \sqrt{2}$.此时 $\sqrt{n^2+2}=\sqrt{4}=2$，集合为 $\{2, \sqrt{3}, \sqrt{2}\}$，有 3 个元素，符合题意.
+		\item 若 $\sqrt{n^2+2} = \sqrt{2} \implies n^2=0 \implies n=0$.此时 $\sqrt{n^2+1}=1$，集合为 $\{1, \sqrt{3}, \sqrt{2}\}$，有 3 个元素，符合题意.
+		\item 若 $\sqrt{n^2+2} = \sqrt{3} \implies n^2=1$, 情况同第一类，不符.
+	\end{itemize}
+	
+	\textbf{3. 计算子集个数}
+	由上可知，实数 $n$ 的所有取值组成的集合为 $S_n = \{-\sqrt{2}, 0, \sqrt{2}\}$.
+	该集合有 $k=3$ 个元素.
+	非空真子集的个数为 $2^k - 2 = 2^3 - 2 = 6$.
+\end{solution}
+
+\subsection*{专题训练参考答案与解析}
+
+\subsubsection*{题目 9}
+\begin{solution}
+	\textbf{答案} $\{-3, 3\}$
+	
+	本题考查有限集合的补集运算.
+	
+	\textbf{方法一：直接法}
+	首先确定全集 $U$ 和并集 $A \cup B$.
+	\[ U = \{-3, -2, -1, 0, 1, 2, 3\} \]
+	\[ A \cup B = \{-2, 1, 2\} \cup \{-1, 0, 1\} = \{-2, -1, 0, 1, 2\} \]
+	$\complement_U(A \cup B)$ 即为在 $U$ 中但不在 $A \cup B$ 中的元素所构成的集合.
+	\[ \complement_U(A \cup B) = \{-3, 3\} \]
+	
+	\textbf{方法二：德摩根定律}
+	根据德摩根定律，$\complement_U(A \cup B) = (\complement_U A) \cap (\complement_U B)$.
+	\[ \complement_U A = \{-3, -1, 0, 3\} \]
+	\[ \complement_U B = \{-3, -2, 2, 3\} \]
+	两补集的交集为：
+	\[ (\complement_U A) \cap (\complement_U B) = \{-3, 3\} \]
+\end{solution}
+
+\subsubsection*{题目 10}
+\begin{solution}
+	本题是容斥原理的直接应用.设参加数学兴趣小组的学生集合为 $M$，参加物理兴趣小组的学生集合为 $P$.
+	根据题意，已知信息为：
+	\[ |M| = 25, \quad |P| = 22, \quad |M \cap P| = 10 \]
+	(1) \textbf{至少参加一个兴趣小组的人数}，即求 $|M \cup P|$.
+	根据容斥原理公式：
+	\[ |M \cup P| = |M| + |P| - |M \cap P| = 25 + 22 - 10 = 37 \text{ (人)} \]
+	
+	(2) \textbf{两个小组都没有参加的人数}.
+	设全班学生为全集 $U$，则所求人数为 $|\complement_U(M \cup P)|$.
+	\[ |\complement_U(M \cup P)| = |U| - |M \cup P| = 50 - 37 = 13 \text{ (人)} \]
+\end{solution}
+
+\subsubsection*{题目 11}
+\begin{solution}
+	本题将德摩根定律与一元二次不等式的求解相结合.
+	
+	(1) \textbf{求集合 B}
+	解不等式 $x^2-3x-4<0$.
+	因式分解得 $(x-4)(x+1)<0$，解得 $-1 < x < 4$.
+	\[ B=\{x \mid -1 < x < 4\} = (-1, 4) \]
+	
+	(2) \textbf{求 $\complement_U(A \cap B)$}
+	直接计算 $A \cap B$ 再求补集较为繁琐，应用德摩根定律可以简化运算.
+	\[ \complement_U(A \cap B) = (\complement_U A) \cup (\complement_U B) \]
+	分别计算两个补集：
+	\[ \complement_U A = \{x \mid \neg(x \le -1 \text{ 或 } x \ge 4)\} = \{x \mid -1 < x < 4\} = (-1, 4) \]
+	\[ \complement_U B = \{x \mid \neg(-1 < x < 4)\} = \{x \mid x \le -1 \text{ 或 } x \ge 4\} = (-\infty, -1] \cup [4, \infty) \]
+	求它们的并集：
+	\[ (\complement_U A) \cup (\complement_U B) = (-1, 4) \cup \left( (-\infty, -1] \cup [4, \infty) \right) = \mathbb{R} \]
+	因此，$\complement_U(A \cap B) = \mathbb{R}$.
+\end{solution}
+
+\subsubsection*{题目 12}
+\begin{solution}
+	本题是容斥原理的逆向和综合应用.设数学及格的集合为 $M$，物理及格的集合为 $P$.
+	已知信息：
+	\[ |U|=50, \quad |M|=40, \quad |P|=31 \]
+	“两科都不及格”的人数为 4，即 $|\complement_U(M \cup P)|=4$.
+	
+	(1) \textbf{求两科都及格的人数}，即求 $|M \cap P|$.
+	首先，由补集信息计算至少有一科及格的人数 $|M \cup P|$.
+	\[ |M \cup P| = |U| - |\complement_U(M \cup P)| = 50 - 4 = 46 \]
+	再根据容斥原理 $|M \cup P| = |M| + |P| - |M \cap P|$，可得：
+	\[ 46 = 40 + 31 - |M \cap P| \]
+	\[ |M \cap P| = 71 - 46 = 25 \text{ (人)} \]
+	
+	(2) \textbf{求恰好只有一科及格的人数}.
+	这部分学生等于“至少一科及格”的人数减去“两科都及格”的人数.
+	\[ |(M \cup P) \setminus (M \cap P)| = |M \cup P| - |M \cap P| = 46 - 25 = 21 \text{ (人)} \]
+\end{solution}
+
+\subsubsection*{题目 13}
+\begin{solution}
+	本题是三集合容斥原理的经典应用.设关注 A, B, C 话题的人构成的集合分别为 $A, B, C$.
+	已知信息：
+	\[ |A|=45, |B|=55, |C|=60 \]
+	\[ |A \cap B|=25, |A \cap C|=20, |B \cap C|=30 \]
+	\[ |A \cap B \cap C|=10 \]
+	
+	(1) \textbf{求至少关注一个话题的人数}，即求 $|A \cup B \cup C|$.
+	应用三集合容斥原理公式：
+	\begin{align*}
+		|A \cup B \cup C| &= (|A|+|B|+|C|) - (|A \cap B|+|A \cap C|+|B \cap C|) + |A \cap B \cap C| \\
+		&= (45+55+60) - (25+20+30) + 10 \\
+		&= 160 - 75 + 10 \\
+		&= 95 \text{ (人)}
+	\end{align*}
+	
+	(2) \textbf{求恰好只关注一个话题的人数}.
+	这部分人数等于只关注 A，只关注 B，只关注 C 的人数之和.
+	
+	只关注A的人数：
+	\[ |A \setminus (B \cup C)| = |A| - |A \cap B| - |A \cap C| + |A \cap B \cap C| = 45 - 25 - 20 + 10 = 10 \text{ (人)} \]
+	只关注B的人数：
+	\[ |B \setminus (A \cup C)| = |B| - |A \cap B| - |B \cap C| + |A \cap B \cap C| = 55 - 25 - 30 + 10 = 10 \text{ (人)} \]
+	只关注C的人数：
+	\[ |C \setminus (A \cup B)| = |C| - |A \cap C| - |B \cap C| + |A \cap B \cap C| = 60 - 20 - 30 + 10 = 20 \text{ (人)} \]
+	
+	总人数为 $10 + 10 + 20 = 40$ (人).
+\end{solution}
