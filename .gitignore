@@ -12,6 +12,9 @@
 *.cb2
 .*.lb
 
+# Old external cover (now drawn with TikZ)
+cover.pdf
+
 ## Intermediate documents:
 *.dvi
 *.xdv

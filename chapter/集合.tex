@@ -1,5 +1,22 @@
 \chapter{集合和逻辑用语}
-\setcounter{choicecounter}{0} 
+\setcounter{choicecounter}{0}
+
+%% ---- 知识框架 ---- %%
+\begin{knowledgeframe}
+\begin{itemize}
+	\item \textbf{集合的基本概念}：元素与集合的关系（$\in, \notin$）、集合的表示法（列举法、描述法）、常用数集符号（$\mathbb{N}, \mathbb{Z}, \mathbb{Q}, \mathbb{R}$）。
+	\item \textbf{集合间的关系}：子集（$\subseteq$）、真子集（$\subsetneq$）、相等（$=$）、空集（$\emptyset$）。
+	\item \textbf{集合的基本运算}：交集（$\cap$）、并集（$\cup$）、补集（$\complement_U A$）、差集（$A \setminus B$）。
+	\item \textbf{运算律}：德摩根定律——$\complement_U(A \cup B) = (\complement_U A) \cap (\complement_U B)$，\ $\complement_U(A \cap B) = (\complement_U A) \cup (\complement_U B)$。
+	\item \textbf{容斥原理}：$|A \cup B| = |A| + |B| - |A \cap B|$，\ 三集合推广公式。
+	\item \textbf{逻辑用语}：充分条件与必要条件（$p \Rightarrow q$）、全称量词与存在量词及其否定、命题的四种形式。
+\end{itemize}
+\end{knowledgeframe}
+
+%% ---- 第一节：集合的基本运算 ---- %%
+\section{集合的基本运算}
+
+\startexercise
 
 \subsection*{A组}
 
@@ -33,21 +50,20 @@
 	\end{tasks}
 \end{choice}
 
-
 \subsection*{B组}
 
 \begin{choice}{}{充分必要条件}
 	{（2023 秋 • 高一 • 山东烟台 • 月考校考）} 下列说法错误的是
 	\begin{tasks}(1)
-		\task “$A \cap B = B$” 是 “$B = \emptyset$” 的必要不充分条件
-		\task “$x=3$” 的一个充分不必要条件是 “$x^2-2x-3=0$”
-		\task “$|x|=1$” 是 “$x=1$” 的必要不充分条件
-		\task “$m$ 是实数” 的一个充分不必要条件是 “$m$ 是有理数”
+		\task ``$A \cap B = B$'' 是 ``$B = \emptyset$'' 的必要不充分条件
+		\task ``$x=3$'' 的一个充分不必要条件是 ``$x^2-2x-3=0$''
+		\task ``$|x|=1$'' 是 ``$x=1$'' 的必要不充分条件
+		\task ``$m$ 是实数'' 的一个充分不必要条件是 ``$m$ 是有理数''
 	\end{tasks}
 \end{choice}
 
 \begin{choice}{}{全称命题的否定}
-	若命题 “$\forall x \in \mathbb{R}, 1-x^2 \le m$” 是假命题，则实数 $m$ 的取值范围是
+	若命题 ``$\forall x \in \mathbb{R}, 1-x^2 \le m$'' 是假命题，则实数 $m$ 的取值范围是
 	\begin{tasks}(2)
 		\task $(-\infty, 1)$
 		\task $(-\infty, 1]$
@@ -57,7 +73,7 @@
 \end{choice}
 
 \begin{choice}{}{充分不必要条件的应用}
-	若 “$x=2$” 是 “$m^2x^2 - (m+3)x + 4 = 0$” 的充分不必要条件，则实数 $m$ 的值为
+	若 ``$x=2$'' 是 ``$m^2x^2 - (m+3)x + 4 = 0$'' 的充分不必要条件，则实数 $m$ 的值为
 	\begin{tasks}(2)
 		\task 1
 		\task $-\frac{1}{2}$
@@ -76,7 +92,6 @@
 	\end{tasks}
 \end{choice}
 
-
 \subsection*{C组}
 
 \begin{choice}{}{新定义集合与元素互异性}
@@ -89,9 +104,14 @@
 	\end{tasks}
 \end{choice}
 
-\subsection*{德摩根定律与容斥原理}
+\stopexercise
 
-\subsubsection*{A组}
+%% ---- 第二节：德摩根定律与容斥原理 ---- %%
+\section{德摩根定律与容斥原理}
+
+\startexercise
+
+\subsection*{A组}
 
 \begin{exercise}{5}{集合的并集与补集运算}
 	\textbf{(填空题)} 已知全集 $U=\{x \in \mathbb{Z} \mid -3 \le x \le 3\}$, 集合 $A=\{-2, 1, 2\}$, $B=\{-1, 0, 1\}$. 求 $\complement_U(A \cup B) = $ \rule{3cm}{0.5pt}.
@@ -105,7 +125,7 @@
 	\end{enumerate}
 \end{exercise}
 
-\subsubsection*{B组}
+\subsection*{B组}
 
 \begin{exercise}{12}{德摩根定律与一元二次不等式}
 	\textbf{(解答题)} 设全集 $U=\mathbb{R}$, 集合 $A=\{x|x \le -1 \text{ 或 } x \ge 4\}$, $B=\{x| x^2-3x-4<0\}$.
@@ -123,8 +143,7 @@
 	\end{enumerate}
 \end{exercise}
 
-
-\subsubsection*{C组}
+\subsection*{C组}
 
 \begin{exercise}{12}{三集合容斥原理}
 	\textbf{(解答题)} 某新闻机构就A, B, C三个热点话题对100人进行调查，结果显示：关注A的有45人，B的有55人，C的有60人；同时关注A和B的有25人，A和C的有20人，B和C的有30人；三个话题都关注的有10人.问：
@@ -133,3 +152,5 @@
 		\item 恰好只关注一个话题的人数是多少？
 	\end{enumerate}
 \end{exercise}
+
+\stopexercise

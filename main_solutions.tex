@@ -1,5 +1,5 @@
 \documentclass[12pt,a4paper,oneside]{ctexbook}
-\usepackage[left=1.5cm, right=1.5cm, top=2.5cm, bottom=2.5cm, headheight=25pt]{geometry}
+\usepackage[left=2cm, right=2cm, top=2.5cm, bottom=2.5cm]{geometry}
 
 %%% 基础数学包 %%%
 \usepackage{amsmath}
@@ -15,17 +15,7 @@
 
 %%% 绘图 %%%
 \usepackage{tikz}
-\usetikzlibrary{positioning, calc, shapes.geometric, decorations.pathreplacing}
-
-%%% 选择题选项 %%%
-\usepackage{tasks}
-\settasks{
-	label = \Alph*.,
-	label-width = 1.8em,
-	item-indent = 2.3em,
-	label-offset = 0.5em,
-	column-sep=1.5em
-}
+\usetikzlibrary{positioning, calc, shapes.geometric}
 
 %%% 高级文档命令 %%%
 \usepackage{xparse}
@@ -34,24 +24,20 @@
 \usepackage[most]{tcolorbox}
 \tcbuselibrary{skins, breakable}
 
-%%% 左右双栏 %%%
-\usepackage{paracol}
-
-%%% 灰度颜色方案（封面/封底除外）%%%
-\definecolor{maincolor}{gray}{0.25}          % 深灰（替代深蓝）
-\definecolor{accentcolor}{gray}{0.45}        % 中灰（替代中蓝）
-\definecolor{lightbg}{gray}{0.96}            % 极浅灰底（替代极浅蓝）
-\definecolor{notecolor}{gray}{0.40}          % 灰色（替代暗金）
-\definecolor{notebg}{gray}{0.97}             % 浅灰底（替代浅米）
-\definecolor{kpcolor}{gray}{0.35}            % 图标灰（替代蓝）
-\definecolor{rulegray}{gray}{0.50}           % 竖线颜色
-\definecolor{answercolor}{gray}{0.85}        % 答题区底色
+%%% 灰度颜色方案（黑白灰度）%%%
+\definecolor{maincolor}{gray}{0.25}
+\definecolor{accentcolor}{gray}{0.45}
+\definecolor{lightbg}{gray}{0.96}
+\definecolor{notecolor}{gray}{0.40}
+\definecolor{notebg}{gray}{0.97}
+\definecolor{kpcolor}{gray}{0.35}
+\definecolor{rulegray}{gray}{0.50}
 
 %%% 封面/封底专用橙色系 %%%
-\definecolor{coverorange}{RGB}{230, 105, 25}     % Springer 橙
-\definecolor{coverdark}{RGB}{50, 50, 55}          % 深炭灰
-\definecolor{coverlight}{RGB}{255, 243, 228}      % 暖奶白
-\definecolor{coveramber}{RGB}{180, 80, 15}        % 深琥珀
+\definecolor{coverorange}{RGB}{230, 105, 25}
+\definecolor{coverdark}{RGB}{50, 50, 55}
+\definecolor{coverlight}{RGB}{255, 243, 228}
+\definecolor{coveramber}{RGB}{180, 80, 15}
 
 %%% 字体配置 %%%
 \setCJKmainfont{SimSun}[BoldFont=SimHei, ItalicFont=STKaiti]
@@ -60,7 +46,6 @@
 
 %%% 计数器 %%%
 \newcounter{choicecounter}
-\newcounter{answercnt}
 
 %%% 考点菱形图标 %%%
 \newcommand{\knowledgepointicon}{%
@@ -71,143 +56,7 @@
 	inner sep=1.5pt
 	] {};}
 
-%%% 答题区竖线命令（在右栏开头自动画竖线）%%%
-\newcommand{\answerdivider}{%
-	\begin{tikzpicture}[overlay, remember picture]
-		\draw[rulegray, line width=0.6pt]
-			([xshift=-3pt]current page.north west |- 0,0) -- ++(0,-\textheight);
-	\end{tikzpicture}%
-}
-
-%%% 进入双栏模式 %%%
-\newcommand{\startexercise}{%
-	\columnratio{0.58,0.42}%
-	\columnsep=12pt%
-	\begin{paracol}{2}%
-	\global\setcounter{answercnt}{0}%
-}
-
-%%% 退出双栏模式 %%%
-\newcommand{\stopexercise}{%
-	\end{paracol}%
-}
-
-%%% 选择题环境（左栏题目 + 右栏答题卡）%%%
-\NewDocumentEnvironment{choice}{m m}{%
-	\par\addvspace{\medskipamount}%
-	\stepcounter{choicecounter}%
-	\stepcounter{answercnt}%
-	\begin{tcolorbox}[
-		enhanced,
-		breakable,
-		colback=lightbg,
-		colframe=maincolor,
-		boxrule=0.4pt,
-		arc=2pt,
-		left=5mm,
-		right=3mm,
-		top=4pt,
-		bottom=4pt,
-		boxsep=0pt,
-		before upper={
-			\noindent
-			\textbf{\color{maincolor}习题 \arabic{choicecounter}}
-			\hfill
-			\knowledgepointicon~\text{#2} \quad
-			{\color{accentcolor}[\ \textbf{#1}\ ]}
-			\par\vspace{1ex}
-		}
-	]
-}{%
-	\end{tcolorbox}%
-	\switchcolumn%
-	%%% 右栏：答题卡 %%%
-	\vspace{\medskipamount}%
-	\stepcounter{answercnt}%
-	\begin{tcolorbox}[
-		enhanced,
-		colback=answercolor,
-		colframe=rulegray,
-		boxrule=0.3pt,
-		arc=1pt,
-		left=4mm,
-		right=3mm,
-		top=4pt,
-		bottom=4pt,
-		boxsep=0pt,
-		before upper={
-			\noindent\textbf{\scriptsize\color{maincolor}答 \arabic{choicecounter}}\par\vspace{2pt}
-			\scriptsize
-		}
-	]%
-	\begin{tikzpicture}[
-		optbox/.style={rectangle, draw=rulegray, minimum size=5mm, inner sep=0pt},
-	]
-		\foreach \l [count=\c] in {A,B,C,D} {
-			\node[optbox] at (\c*7mm, 0) {};
-			\node[font=\tiny] at (\c*7mm, -4mm) {\l};
-		}
-	\end{tikzpicture}%
-	\end{tcolorbox}%
-	\switchcolumn*%
-}
-
-%%% 非选择题环境（左栏题目 + 右栏作答横线）%%%
-\NewDocumentEnvironment{exercise}{ O{} g g }{% O{}=>[note], g=>{score}, g=>{topic}
-	\par\addvspace{\medskipamount}%
-	\stepcounter{choicecounter}%
-	\begin{tcolorbox}[
-		enhanced,
-		breakable,
-		colback=lightbg,
-		colframe=maincolor,
-		boxrule=0.4pt,
-		arc=2pt,
-		left=5mm,
-		right=3mm,
-		top=4pt,
-		bottom=4pt,
-		boxsep=0pt,
-		before upper={
-			\noindent
-			\textbf{\color{maincolor}习题 \thechoicecounter}
-			\IfValueT{#1}{\ {\color{accentcolor}#1}}
-			\IfValueT{#2}{\quad{\color{accentcolor}[本题 #2 分]}}
-			\hfill
-			\IfValueT{#3}{\knowledgepointicon~\text{#3}}
-			\par\vspace{1ex}
-		}
-	]
-}{%
-	\end{tcolorbox}%
-	\switchcolumn%
-	%%% 右栏：作答区 %%%
-	\vspace{\medskipamount}%
-	\begin{tcolorbox}[
-		enhanced,
-		colback=answercolor,
-		colframe=rulegray,
-		boxrule=0.3pt,
-		arc=1pt,
-		left=4mm,
-		right=3mm,
-		top=4pt,
-		bottom=4pt,
-		boxsep=0pt,
-		before upper={
-			\noindent\textbf{\scriptsize\color{maincolor}答 \thechoicecounter}\par\vspace{2pt}
-			\scriptsize
-		}
-	]%
-	\color{rulegray}%
-	\foreach \i in {1,...,3}{%
-		\rule{\linewidth}{0.3pt}\par\vspace{8mm}%
-	}%
-	\end{tcolorbox}%
-	\switchcolumn*%
-}
-
-%%% 解析环境（答案册专用，习题册不用）%%%
+%%% 解析环境 %%%
 \newenvironment{solution}{%
 	\par\addvspace{\medskipamount}%
 	\begin{tcolorbox}[
@@ -247,32 +96,11 @@
 	#1
 }
 
-%%% 知识框架环境 %%%
-\newtcolorbox{knowledgeframe}{%
-	enhanced, breakable,
-	colback=lightbg,
-	colframe=maincolor,
-	boxrule=0.4pt,
-	arc=2pt,
-	left=5mm,
-	right=3mm,
-	top=4pt,
-	bottom=4pt,
-	boxsep=0pt,
-	before upper={
-		\noindent
-		\textbf{\color{maincolor}知识框架}
-		\hfill
-		\knowledgepointicon~\text{要点回顾}
-		\par\vspace{1ex}
-	}
-}
-
 %%% 页眉页脚 %%%
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\small\color{maincolor}高中数学之旅（习题集）}
+\fancyhead[L]{\small\color{maincolor}高中数学之旅（参考答案）}
 \fancyhead[R]{\small\color{maincolor}\leftmark}
 \fancyfoot[C]{\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
@@ -311,13 +139,13 @@
 		\node[anchor=west, text=coverdark, font=\fontsize{36}{44}\selectfont\bfseries,
 			text width=12cm, align=flush left]
 			at ([xshift=2.8cm, yshift=2.5cm]current page.west)
-			{高中数学之旅\\[0.3em]（习题集）};
+			{高中数学之旅\\[0.3em]（参考答案）};
 
 		% 英文副标题（深琥珀色斜体）
 		\node[anchor=west, text=coveramber, font=\fontsize{15}{20}\selectfont\itshape,
 			text width=12cm, align=flush left]
 			at ([xshift=2.8cm, yshift=-0.5cm]current page.west)
-			{An Excursion through Secondary School Mathematics: Exercise Book};
+			{An Excursion through Secondary School Mathematics: Solutions};
 
 		% 作者（深炭灰）
 		\node[anchor=west, text=coverdark, font=\fontsize{14}{18}\selectfont]
@@ -340,8 +168,8 @@
 
 \mainmatter
 \pagestyle{fancy}
-\include{chapter/集合.tex}
-\include{chapter/解三角形.tex}
+\include{solution/集合.tex}
+\include{solution/解三角形.tex}
 
 %%% 封底 %%%
 {
@@ -374,13 +202,13 @@
 		\node[anchor=east, text=coverdark, font=\fontsize{28}{34}\selectfont\bfseries,
 			text width=12cm, align=flush right]
 			at ([xshift=-2.8cm, yshift=3.5cm]current page.east)
-			{高中数学之旅（习题集）};
+			{高中数学之旅（参考答案）};
 
 		% 英文书名（深琥珀色斜体）
 		\node[anchor=east, text=coveramber, font=\normalsize\itshape,
 			text width=12cm, align=flush right]
 			at ([xshift=-2.8cm, yshift=2cm]current page.east)
-			{An Excursion through Secondary School Mathematics: Exercise Book};
+			{An Excursion through Secondary School Mathematics: Solutions};
 
 		% 分隔线
 		\draw[coverorange, line width=0.4pt]
@@ -391,10 +219,10 @@
 		\node[anchor=north west, text=coverdark, font=\small,
 			text width=12.5cm, align=justify]
 			at ([xshift=1.5cm, yshift=0.6cm]current page.west)
-			{本书为《高中数学之旅》配套习题集，涵盖集合与逻辑用语、解三角形等核心章节。
-			每章按 A / B / C 三组分层编排，由基础到进阶递进；
-			选择题配有双栏答题区，非选择题预留作答横线，
-			适合高中数学日常练习与考前强化使用。};
+			{本书为《高中数学之旅》配套参考答案册，与习题集一一对应，
+			提供每道选择题、填空题和解答题的完整解析过程。
+			答案讲解注重思路拆解与逻辑链条的完整呈现，
+			便于读者在练习后自查订正、加深理解。};
 
 		% 作者（底部横条上方）
 		\node[anchor=south east, text=coverdark, font=\small]
