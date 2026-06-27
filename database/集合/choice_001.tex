@@ -1,0 +1,30 @@
+\begin{choice}[topic={量词命题的否定}]
+已知命题 $p: \exists x \in \mathbb{N}, x^2 \le 0$，则 $\neg p$ 为
+\begin{tasks}(2)
+	\task $\exists x \in \mathbb{N}, x^2 \le 0$
+	\task $\exists x \in \mathbb{N}, x^2 > 0$
+	\task $\forall x \in \mathbb{N}, x^2 > 0$
+	\task $\forall x \in \mathbb{N}, x^2 \ge 0$
+\end{tasks}
+\end{choice}
+\begin{choice-sol}
+\textbf{答案 C}
+
+本题考查全称量词命题与存在量词命题的否定关系.
+否定一个量词命题，遵循"改量词，否结论"的原则.
+原命题 $p$ 为一个存在量词命题，其逻辑形式为 $\exists x \in M, P(x)$.
+
+其否定的一般形式为：
+\[ \neg (\exists x \in M, P(x)) \iff \forall x \in M, \neg P(x) \]
+在本题中，量词 $\exists$ (存在) 的否定是 $\forall$ (任意).
+原结论 $P(x)$ 为 $x^2 \le 0$，其否定 $\neg P(x)$ 为 $x^2 > 0$.
+
+故 $\neg p$ 为 $\forall x \in \mathbb{N}, x^2 > 0$。
+
+\begin{note}
+选项 D 中，$x^2 \ge 0$ 在自然数范围内是恒成立的，
+但它并非 $x^2 \le 0$ 的严格否定.
+一个结论的否定是其逻辑补集，而非简单的反义关系.
+对于实数 $y$，$y \le 0$ 的否定是 $y>0$。
+\end{note}
+\end{choice-sol}

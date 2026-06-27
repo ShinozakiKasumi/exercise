@@ -1,0 +1,51 @@
+%%% 习题册封面 %%%
+{
+	\thispagestyle{empty}
+	\begin{tikzpicture}[remember picture, overlay]
+		% === 背景：暖白底 ===
+		\fill[coverlight]
+			(current page.south west) rectangle (current page.north east);
+
+		% === Springer 风格：顶部橙色横条 ===
+		\fill[coverorange]
+			(current page.north west) rectangle
+			([yshift=-2.5cm]current page.north east);
+		% 横条内系列名（白色粗体）
+		\node[anchor=west, text=white, font=\bfseries\large]
+			at ([xshift=2.8cm, yshift=-1.25cm]current page.north west)
+			{高中数学之旅};
+
+		% === Springer 风格：左侧橙色竖条 ===
+		\fill[coverorange]
+			(current page.north west) rectangle
+			([xshift=2cm, yshift=1.5cm]current page.south west);
+		% 竖条底部细横线
+		\draw[coverorange, line width=0.8pt]
+			([xshift=2cm, yshift=1.5cm]current page.south west) --
+			([yshift=1.5cm]current page.south east);
+
+		% === 右侧内容区 ===
+		% 主标题（深炭灰色）
+		\node[anchor=west, text=coverdark, font=\fontsize{36}{44}\selectfont\bfseries,
+			text width=12cm, align=flush left]
+			at ([xshift=2.8cm, yshift=2.5cm]current page.west)
+			{高中数学之旅\\[0.3em]（习题集）};
+
+		% 英文副标题（深琥珀色斜体）
+		\node[anchor=west, text=coveramber, font=\fontsize{15}{20}\selectfont\itshape,
+			text width=12cm, align=flush left]
+			at ([xshift=2.8cm, yshift=-0.5cm]current page.west)
+			{An Excursion through Secondary School Mathematics: Exercise Book};
+
+		% 作者（深炭灰）
+		\node[anchor=west, text=coverdark, font=\fontsize{14}{18}\selectfont]
+			at ([xshift=2.8cm, yshift=-3cm]current page.west)
+			{知乎@余命数 \enspace\textbar\enspace Midnight Forever};
+
+		% 版本信息（底部）
+		\node[anchor=south west, text=coveramber, font=\small]
+			at ([xshift=2.8cm, yshift=0.6cm]current page.south west)
+			{最后更新：\today};
+	\end{tikzpicture}
+	\newpage
+}

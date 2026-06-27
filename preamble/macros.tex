@@ -1,0 +1,40 @@
+%%% macros.tex — 语义化命令与工具宏 %%%
+
+%%% 语义化数学符号 %%%
+\newcommand{\dd}{\mathrm{d}}           % 微分符号 d
+\newcommand{\ee}{\mathrm{e}}           % 自然常数 e
+\newcommand{\ii}{\mathrm{i}}           % 虚数单位 i
+\newcommand{\R}{\mathbb{R}}            % 实数集
+\newcommand{\N}{\mathbb{N}}            % 自然数集
+\newcommand{\Z}{\mathbb{Z}}            % 整数集
+\newcommand{\Q}{\mathbb{Q}}            % 有理数集
+
+%%% 考点菱形图标 %%%
+\newcommand{\knowledgepointicon}{%
+	\tikz[baseline=-0.1ex] \node[
+	fill=kpcolor,
+	shape=diamond,
+	aspect=0.7,
+	inner sep=1.5pt
+	] {};}
+
+%%% 双栏答题区命令（习题册专用）%%%
+% 这些命令仅在加载了 paracol 包时才有意义
+% 答案册不加载 paracol，因此用 \providecommand 提供空定义
+
+\providecommand{\answerdivider}{%
+	\begin{tikzpicture}[overlay, remember picture]
+		\draw[rulegray, line width=0.6pt]
+			([xshift=-3pt]current page.north west |- 0,0) -- ++(0,-\textheight);
+	\end{tikzpicture}%
+}
+
+\providecommand{\startexercise}{%
+	\columnratio{0.58,0.42}%
+	\columnsep=12pt%
+	\begin{paracol}{2}%
+}
+
+\providecommand{\stopexercise}{%
+	\end{paracol}%
+}

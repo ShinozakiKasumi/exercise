@@ -1,0 +1,64 @@
+%%% 习题册封底 %%%
+{
+	\thispagestyle{empty}
+	\begin{tikzpicture}[remember picture, overlay]
+		% === 背景：暖白底 ===
+		\fill[coverlight]
+			(current page.south west) rectangle (current page.north east);
+
+		% === 封面镜像：底部橙色横条 ===
+		\fill[coverorange]
+			(current page.south west) rectangle
+			([yshift=2.5cm]current page.south east);
+		% 横条内系列名（白色粗体）
+		\node[anchor=east, text=white, font=\bfseries\large]
+			at ([xshift=-2.8cm, yshift=1.25cm]current page.south east)
+			{高中数学之旅};
+
+		% === 封面镜像：右侧橙色竖条 ===
+		\fill[coverorange]
+			(current page.north east) rectangle
+			([xshift=-2cm, yshift=-1.5cm]current page.south east);
+		% 竖条顶部细横线
+		\draw[coverorange, line width=0.8pt]
+			([xshift=-2cm, yshift=-1.5cm]current page.north east) --
+			([yshift=-1.5cm]current page.north west);
+
+		% === 左侧内容区 ===
+		% 书名（深炭灰色）
+		\node[anchor=east, text=coverdark, font=\fontsize{28}{34}\selectfont\bfseries,
+			text width=12cm, align=flush right]
+			at ([xshift=-2.8cm, yshift=3.5cm]current page.east)
+			{高中数学之旅（习题集）};
+
+		% 英文书名（深琥珀色斜体）
+		\node[anchor=east, text=coveramber, font=\normalsize\itshape,
+			text width=12cm, align=flush right]
+			at ([xshift=-2.8cm, yshift=2cm]current page.east)
+			{An Excursion through Secondary School Mathematics: Exercise Book};
+
+		% 分隔线
+		\draw[coverorange, line width=0.4pt]
+			([xshift=1.5cm, yshift=1cm]current page.west) --
+			([xshift=-2.8cm, yshift=1cm]current page.east);
+
+		% 简介（深炭灰，左对齐）
+		\node[anchor=north west, text=coverdark, font=\small,
+			text width=12.5cm, align=justify]
+			at ([xshift=1.5cm, yshift=0.6cm]current page.west)
+			{本书为《高中数学之旅》配套习题集，涵盖集合与逻辑用语、解三角形等核心章节。
+			每章按 A / B / C 三组分层编排，由基础到进阶递进；
+			选择题配有双栏答题区，非选择题预留作答横线，
+			适合高中数学日常练习与考前强化使用。};
+
+		% 作者（底部横条上方）
+		\node[anchor=south east, text=coverdark, font=\small]
+			at ([xshift=-2.8cm, yshift=2.8cm]current page.south east)
+			{知乎@余命数 \enspace\textbar\enspace Midnight Forever};
+
+		% 版本信息（底部横条上方）
+		\node[anchor=south east, text=coveramber, font=\small]
+			at ([xshift=-2.8cm, yshift=1.6cm]current page.south east)
+			{\today};
+	\end{tikzpicture}
+}

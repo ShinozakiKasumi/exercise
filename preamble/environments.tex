@@ -1,0 +1,224 @@
+%%% environments.tex — 习题环境定义（xsim + tcolorbox）%%%
+
+%%% ==================== xsim 全局配置 ==================== %%%
+
+\xsimsetup{
+	exercise/name = 习题,
+	solution/name = 解析,
+}
+
+%%% 自定义属性 %%%
+\DeclareExerciseProperty{source}    % 题目来源
+\DeclareExerciseProperty{topic}     % 知识点标签
+\DeclareExerciseProperty{score}     % 分值
+
+%%% ==================== 选择题类型（choice）==================== %%%
+
+\DeclareExerciseType{choice}{
+	exercise-env  = choice ,
+	solution-env  = choice-sol ,
+	exercise-name = 习题 ,
+	solution-name = 解析 ,
+	exercise-template = choice-default ,
+	solution-template = solution-default ,
+}
+
+%%% 选择题 — 习题册模板（左栏题目 + 右栏答题卡）%%%
+\DeclareExerciseEnvironmentTemplate{choice-default}{%
+	\par\addvspace{\medskipamount}%
+	\begin{tcolorbox}[
+		enhanced,
+		breakable,
+		colback=lightbg,
+		colframe=maincolor,
+		boxrule=0.4pt,
+		arc=2pt,
+		left=5mm,
+		right=3mm,
+		top=4pt,
+		bottom=4pt,
+		boxsep=0pt,
+		before upper={
+			\noindent
+			\textbf{\color{maincolor}\GetExerciseName\ \GetExerciseProperty{counter}}
+			\hfill
+			\IfExercisePropertySetTF{topic}{\knowledgepointicon~\GetExerciseProperty{topic}}{}
+			\IfExercisePropertySetT{source}{\quad{\color{accentcolor}[\ \textbf{\GetExerciseProperty{source}}\ ]}}
+			\par\vspace{1ex}
+		}
+	]
+}{%
+	\end{tcolorbox}%
+	% 习题册模式（非打印解析时）：切换到右栏绘制答题卡
+	\IfSolutionPrintF{%
+		\switchcolumn%
+		\vspace{\medskipamount}%
+		\begin{tcolorbox}[
+			enhanced,
+			colback=answercolor,
+			colframe=rulegray,
+			boxrule=0.3pt,
+			arc=1pt,
+			left=4mm,
+			right=3mm,
+			top=4pt,
+			bottom=4pt,
+			boxsep=0pt,
+			before upper={
+				\noindent\textbf{\scriptsize\color{maincolor}答 \GetExerciseProperty{counter}}\par\vspace{2pt}
+				\scriptsize
+			}
+		]%
+		\begin{tikzpicture}[
+			optbox/.style={rectangle, draw=rulegray, minimum size=5mm, inner sep=0pt},
+		]
+			\foreach \l [count=\c] in {A,B,C,D} {
+				\node[optbox] at (\c*7mm, 0) {};
+				\node[font=\tiny] at (\c*7mm, -4mm) {\l};
+			}
+		\end{tikzpicture}%
+		\end{tcolorbox}%
+		\switchcolumn*%
+	}%
+}
+
+%%% 选择题 — 答案册模板（仅解析）%%%
+% choice-sol 使用下方的 solution-default 通用模板
+
+%%% ==================== 解答题类型（prob）==================== %%%
+% 注：命名为 prob 而非 exercise，以避免与 xsim 内置 exercise 类型冲突
+
+\DeclareExerciseType{prob}{
+	exercise-env  = prob ,
+	solution-env  = prob-sol ,
+	exercise-name = 习题 ,
+	solution-name = 解析 ,
+	exercise-template = prob-default ,
+	solution-template = solution-default ,
+}
+
+%%% 解答题 — 习题册模板（左栏题目 + 右栏作答横线）%%%
+\DeclareExerciseEnvironmentTemplate{prob-default}{%
+	\par\addvspace{\medskipamount}%
+	\begin{tcolorbox}[
+		enhanced,
+		breakable,
+		colback=lightbg,
+		colframe=maincolor,
+		boxrule=0.4pt,
+		arc=2pt,
+		left=5mm,
+		right=3mm,
+		top=4pt,
+		bottom=4pt,
+		boxsep=0pt,
+		before upper={
+			\noindent
+			\textbf{\color{maincolor}\GetExerciseName\ \GetExerciseProperty{counter}}
+			\IfExercisePropertySetT{source}{\ {\color{accentcolor}\GetExerciseProperty{source}}}
+			\IfExercisePropertySetT{score}{\quad{\color{accentcolor}[本题 \GetExerciseProperty{score} 分]}}
+			\hfill
+			\IfExercisePropertySetTF{topic}{\knowledgepointicon~\GetExerciseProperty{topic}}{}
+			\par\vspace{1ex}
+		}
+	]
+}{%
+	\end{tcolorbox}%
+	% 习题册模式（非打印解析时）：切换到右栏绘制作答区
+	\IfSolutionPrintF{%
+		\switchcolumn%
+		\vspace{\medskipamount}%
+		\begin{tcolorbox}[
+			enhanced,
+			colback=answercolor,
+			colframe=rulegray,
+			boxrule=0.3pt,
+			arc=1pt,
+			left=4mm,
+			right=3mm,
+			top=4pt,
+			bottom=4pt,
+			boxsep=0pt,
+			before upper={
+				\noindent\textbf{\scriptsize\color{maincolor}答 \GetExerciseProperty{counter}}\par\vspace{2pt}
+				\scriptsize
+			}
+		]%
+		\color{rulegray}%
+		\foreach \i in {1,...,3}{%
+			\rule{\linewidth}{0.3pt}\par\vspace{8mm}%
+		}%
+		\end{tcolorbox}%
+		\switchcolumn*%
+	}%
+}
+
+%%% 解答题 — 答案册模板（仅解析）%%%
+% prob-sol 使用下方的 solution-default 通用模板
+
+%%% ==================== 通用解析模板 ==================== %%%
+
+\DeclareExerciseEnvironmentTemplate{solution-default}{%
+	\par\addvspace{\medskipamount}%
+	\begin{tcolorbox}[
+		enhanced, breakable,
+		colback=lightbg,
+		colframe=maincolor,
+		boxrule=0.4pt,
+		arc=2pt,
+		left=5mm,
+		right=3mm,
+		top=4pt,
+		bottom=4pt,
+		boxsep=0pt,
+		before upper={
+			\noindent
+			\textbf{\color{maincolor}\GetExerciseName\ \GetExerciseProperty{counter}}
+			\IfExercisePropertySetT{topic}{\hfill\knowledgepointicon~\GetExerciseProperty{topic}}
+			\par\vspace{0.5ex}
+		}
+	]
+}{%
+	\end{tcolorbox}%
+}
+
+%%% ==================== 辅助环境 ==================== %%%
+
+%%% 注释环境 %%%
+\newtcolorbox{note}[1][]{%
+	enhanced, breakable,
+	colback=notebg,
+	colframe=notecolor,
+	boxrule=0.4pt,
+	arc=2pt,
+	left=5mm,
+	right=3mm,
+	top=4pt,
+	bottom=4pt,
+	boxsep=0pt,
+	before upper={
+		\noindent\textbf{\color{notecolor}注}\par\vspace{0.5ex}
+	},
+	#1
+}
+
+%%% 知识框架环境 %%%
+\newtcolorbox{knowledgeframe}{%
+	enhanced, breakable,
+	colback=lightbg,
+	colframe=maincolor,
+	boxrule=0.4pt,
+	arc=2pt,
+	left=5mm,
+	right=3mm,
+	top=4pt,
+	bottom=4pt,
+	boxsep=0pt,
+	before upper={
+		\noindent
+		\textbf{\color{maincolor}知识框架}
+		\hfill
+		\knowledgepointicon~\text{要点回顾}
+		\par\vspace{1ex}
+	}
+}

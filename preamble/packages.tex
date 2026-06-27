@@ -1,0 +1,43 @@
+%%% packages.tex — 宏包调用 %%%
+
+%%% 页面布局 %%%
+% geometry 在各主文件中单独配置（习题册和答案册页边距不同）
+
+%%% 基础数学包 %%%
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+%%% 超链接 %%%
+\usepackage[colorlinks=true, linkcolor=black, citecolor=black]{hyperref}
+
+%%% 数学字体 %%%
+\usepackage{unicode-math}
+\setmathfont{NewCMMath-Regular.otf}
+
+%%% 绘图 %%%
+\usepackage{tikz}
+\usetikzlibrary{positioning, calc, shapes.geometric, decorations.pathreplacing}
+
+%%% 选择题选项 %%%
+\usepackage{tasks}
+\settasks{
+	label = \Alph*.,
+	label-width = 1.8em,
+	item-indent = 2.3em,
+	label-offset = 0.5em,
+	column-sep=1.5em
+}
+
+%%% 高级文档命令 %%%
+\usepackage{xparse}
+
+%%% 彩色方框 %%%
+\usepackage[most]{tcolorbox}
+\tcbuselibrary{skins, breakable}
+
+%%% 习题与解析管理 %%%
+\usepackage{xsim}
+
+%%% 页眉页脚 %%%
+\usepackage{fancyhdr}

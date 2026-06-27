@@ -1,0 +1,41 @@
+\begin{choice}[topic={集合的补集与互异性}]
+设全集 $U=\{1,2,3,4,5\}$，集合 $A=\{1,a,b\}, B=\{4, a-b\}$.若 $\complement_U A = B$，则 $a,b$ 的值分别为
+\begin{tasks}(2)
+	\task 3,2
+	\task 4,3
+	\task 3,2 或 5,3
+	\task 5,2 或 5,3
+\end{tasks}
+\end{choice}
+\begin{choice-sol}
+\textbf{答案 D}
+
+条件 $\complement_U A = B$ 是解题的关键，
+它等价于以下两个条件同时成立：
+\[ A \cup B = U \quad \text{且} \quad A \cap B = \emptyset \]
+根据题意：
+$U=\{1,2,3,4,5\}$
+$A=\{1,a,b\}$
+$B=\{4, a-b\}$
+
+由 $A \cup B = U$，可得：
+\[ \{1,a,b\} \cup \{4, a-b\} = \{1, a, b, 4, a-b\} = \{1,2,3,4,5\} \]
+比较两集合，可知无序集合 $\{a, b, a-b\}$ 必须与 $\{2,3,5\}$ 相等.
+同时，集合 A 和 B 的元素必须满足互异性.
+
+我们通过分类讨论来寻找 $a,b$ 的取值：
+\begin{itemize}
+	\item \textbf{情况一：} 设 $a=5, b=2$.
+	则 $a-b = 3$.
+	此时 $\{a,b,a-b\} = \{5,2,3\}$ 与 $\{2,3,5\}$ 匹配.
+	检验：$A=\{1,5,2\}, B=\{4,3\}$.
+	此时 $\complement_U A = \{3,4\}=B$，符合题意.
+	\item \textbf{情况二：} 设 $a=5, b=3$.
+	则 $a-b = 2$.
+	此时 $\{a,b,a-b\} = \{5,3,2\}$ 与 $\{2,3,5\}$ 匹配.
+	检验：$A=\{1,5,3\}, B=\{4,2\}$.
+	此时 $\complement_U A = \{2,4\}=B$，符合题意。
+\end{itemize}
+其他组合（如 $a=3,b=2$ 时 $a-b=1$,与$A$中元素重复）均不满足条件.
+因此，$a,b$ 的值为 5,2 或 5,3。
+\end{choice-sol}

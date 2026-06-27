@@ -1,0 +1,51 @@
+\begin{choice}[source={2024 秋 · 高一 · 福建龙岩 · 开学考试校考}, topic={新定义集合与元素互异性}]
+定义集合 $A \otimes B = \{x \mid x=\sqrt{a^2+b^2}, a \in A, b \in B\}$，若 $A=\{n, -1\}, B=\{\sqrt{2}, 1\}$，且集合 $A \otimes B$ 中有 3 个元素，则由实数 $n$ 的所有取值组成的集合的非空真子集的个数为
+\begin{tasks}(4)
+	\task 2
+	\task 6
+	\task 14
+	\task 15
+\end{tasks}
+\end{choice}
+\begin{choice-sol}
+\textbf{答案 B}
+
+本题综合考查了新定义集合的理解、集合元素的互异性以及子集个数的计算.
+
+\textbf{1. 构造集合 $A \otimes B$}
+根据定义，$A=\{n, -1\}, B=\{\sqrt{2}, 1\}$。
+\[ A \otimes B = \{\sqrt{n^2 + (\sqrt{2})^2}, \sqrt{n^2 + 1^2}, \sqrt{(-1)^2 + (\sqrt{2})^2}, \sqrt{(-1)^2 + 1^2}\} \]
+化简得：
+\[ A \otimes B = \{\sqrt{n^2+2}, \sqrt{n^2+1}, \sqrt{3}, \sqrt{2}\} \]
+
+\textbf{2. 应用元素个数条件}
+已知 $\lvert A \otimes B\rvert = 3$.
+由于上式给出了 4 个表达式，根据集合元素的互异性，
+其中必有两个表达式的值相等.
+注意到 $\sqrt{n^2+2} > \sqrt{n^2+1}$ 且 $\sqrt{3} > \sqrt{2}$，
+因此相等的只可能是一个含 $n$ 的项与一个常数项.
+
+分类讨论：
+\begin{itemize}
+	\item 若 $\sqrt{n^2+1} = \sqrt{2} \implies n^2=1 \implies n=\pm 1$.
+	此时 $\sqrt{n^2+2}=\sqrt{3}$，
+	集合为 $\{\sqrt{2}, \sqrt{3}\}$，
+	仅有 2 个元素，不合题意.
+	\item 若 $\sqrt{n^2+1} = \sqrt{3} \implies n^2=2 \implies n=\pm \sqrt{2}$.
+	此时 $\sqrt{n^2+2}=\sqrt{4}=2$，
+	集合为 $\{2, \sqrt{3}, \sqrt{2}\}$，
+	有 3 个元素，符合题意.
+	\item 若 $\sqrt{n^2+2} = \sqrt{2} \implies n^2=0 \implies n=0$.
+	此时 $\sqrt{n^2+1}=1$，
+	集合为 $\{1, \sqrt{3}, \sqrt{2}\}$，
+	有 3 个元素，符合题意.
+	\item 若 $\sqrt{n^2+2} = \sqrt{3} \implies n^2=1$，
+	情况同第一类，不符。
+\end{itemize}
+
+\textbf{3. 计算子集个数}
+由上可知，实数 $n$ 的所有取值组成的集合为
+$S_n = \{-\sqrt{2}, 0, \sqrt{2}\}$。
+该集合有 $k=3$ 个元素.
+非空真子集的个数为 $2^k - 2 = 2^3 - 2 = 6$。
+\end{choice-sol}

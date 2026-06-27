@@ -1,0 +1,99 @@
+\begin{prob}[topic={面积公式与内心}, score=12]
+已知 $\triangle ABC$ 的面积为 $S$, 角 $A,B,C$ 所对的边分别为 $a,b,c$.点 $O$ 为 $\triangle ABC$ 的内心, $b = 2\sqrt{3}$ 且 $S = \frac{\sqrt{3}}{4}(a^2+c^2-b^2)$。
+\begin{enumerate}
+	\item[(1)] 求 $B$ 的大小；
+	\item[(2)] 求 $\triangle AOC$ 的周长的取值范围。
+\end{enumerate}
+\end{prob}
+\begin{prob-sol}
+本题通过一个面积与边长的关系式来约束三角形的形状.我们的策略是利用面积公式、余弦定理来翻译这个关系式，从而确定一个内角.
+
+\textbf{1. 求角$B$.}
+一方面，三角形的面积公式为：
+\[
+S = \frac{1}{2}ac\sin B
+\]
+另一方面，题目给出的条件 $S = \frac{\sqrt{3}}{4}(a^2+c^2-b^2)$ 中，括号内的项 $a^2+c^2-b^2$ 与余弦定理结构相似.
+由余弦定理，$b^2 = a^2+c^2 - 2ac\cos B$, 可得：
+\[
+a^2+c^2-b^2 = 2ac\cos B
+\]
+将此式代入题目给定的条件中：
+\[
+S = \frac{\sqrt{3}}{4}(2ac\cos B) = \frac{\sqrt{3}}{2}ac\cos B
+\]
+于是得到了关于面积 $S$ 的两个等价表达式，令它们相等：
+\[
+\frac{1}{2}ac\sin B = \frac{\sqrt{3}}{2}ac\cos B
+\]
+由于在三角形中 $a, c$ 均为正数，可约去 $\frac{1}{2}ac$:
+\[
+\sin B = \sqrt{3}\cos B
+\]
+因为 $B \in (0, \pi)$, $\cos B=0$ 时 $\sin B \neq 0$, 故 $\cos B \neq 0$.两边同除以 $\cos B$ 得：
+\[
+\tan B = \sqrt{3}
+\]
+考虑到 $B$ 是三角形内角，解得 $B = \frac{\pi}{3}$.
+
+\textbf{2. 求解 $\triangle AOC$ 周长的取值范围}
+
+第 (1) 问确定了角 $B$ 的大小，多了一个条件，方便我们弄出第二问，来看第二问，其目标对象是 $\triangle AOC$ 的周长，我们的思路是：先将周长表达为一个函数的形式，并确定其定义域，进而求出值域.
+
+点 $O$ 是 $\triangle ABC$ 的内心，即 $AO, CO$ 分别是 $\angle A$ 和 $\angle C$ 的角平分线.因此，在 $\triangle AOC$ 中：
+\[
+\angle OAC = \frac{A}{2}, \quad \angle OCA = \frac{C}{2}
+\]
+其第三个角为：
+\[
+\angle AOC = \pi - \left(\frac{A}{2} + \frac{C}{2}\right) = \pi - \frac{A+C}{2}
+\]
+由于我们已经求出 $B=\frac{\pi}{3}$, 所以 $A+C = \pi - B = \frac{2\pi}{3}$.代入上式，我们得到一个重要的定值：
+\[
+\angle AOC = \pi - \frac{2\pi/3}{2} = \pi - \frac{\pi}{3} = \frac{2\pi}{3}
+\]
+$\triangle AOC$ 的周长 $P = AO + CO + AC$.其中 $AC = b = 2\sqrt{3}$ 是已知定值.
+
+我们选择角 $A$ 作为唯一的自由参数.在 $\triangle AOC$ 中，应用正弦定理：
+\[
+\frac{AO}{\sin(\angle OCA)} = \frac{CO}{\sin(\angle OAC)} = \frac{AC}{\sin(\angle AOC)}
+\]
+\[
+\frac{AO}{\sin(C/2)} = \frac{CO}{\sin(A/2)} = \frac{2\sqrt{3}}{\sin(2\pi/3)} = \frac{2\sqrt{3}}{\sqrt{3}/2} = 4
+\]
+由此解出 $AO = 4\sin(C/2)$ 和 $CO = 4\sin(A/2)$.
+周长表达式为：
+\[
+P(A,C) = 4\sin(A/2) + 4\sin(C/2) + 2\sqrt{3}
+\]
+将 $C = \frac{2\pi}{3}-A$ 代入，得到关于单参数 $A$ 的函数：
+\[
+P(A) = 4\left[\sin\left(\frac{A}{2}\right) + \sin\left(\frac{2\pi/3-A}{2}\right)\right] + 2\sqrt{3} = 4\left[\sin\left(\frac{A}{2}\right) + \sin\left(\frac{\pi}{3}-\frac{A}{2}\right)\right] + 2\sqrt{3}
+\]
+
+首先确定参数 $A$ 的范围.在 $\triangle ABC$ 中，各角需为正：
+\[
+A>0, \quad C = \frac{2\pi}{3}-A > 0 \implies A < \frac{2\pi}{3}
+\]
+故 $A \in (0, \frac{2\pi}{3})$.
+
+我们对括号内的三角函数部分进行化简，令其为 $g(A) = \sin(\frac{A}{2}) + \sin(\frac{\pi}{3}-\frac{A}{2})$.
+利用和差化积公式：
+\[
+g(A) = 2\sin\left(\frac{A/2 + \pi/3-A/2}{2}\right)\cos\left(\frac{A/2 - (\pi/3-A/2)}{2}\right) = 2\sin\left(\frac{\pi}{6}\right)\cos\left(\frac{A-\pi/3}{2}\right)
+\]
+由于 $2\sin(\frac{\pi}{6}) = 2 \cdot \frac{1}{2} = 1$, 所以 $g(A) = \cos\left(\frac{A}{2}-\frac{\pi}{6}\right)$.
+
+现在求 $g(A)$ 的范围.因为 $A \in (0, \frac{2\pi}{3})$:
+\[
+\frac{A}{2} \in \left(0, \frac{\pi}{3}\right) \implies \frac{A}{2}-\frac{\pi}{6} \in \left(-\frac{\pi}{6}, \frac{\pi}{6}\right)
+\]
+余弦函数 $y=\cos x$ 在区间 $(-\frac{\pi}{6}, \frac{\pi}{6})$ 上是偶函数，且在该区间上从 $\cos(-\pi/6)=\frac{\sqrt{3}}{2}$ 减到 $\cos(0)=1$ 再增回 $\cos(\pi/6)=\frac{\sqrt{3}}{2}$.其值域为 $(\cos(\frac{\pi}{6}), \cos(0)] = (\frac{\sqrt{3}}{2}, 1]$.
+所以 $g(A) \in (\frac{\sqrt{3}}{2}, 1]$.
+
+最终，周长 $P(A) = 4g(A) + 2\sqrt{3}$ 的取值范围是：
+\[
+\left(4 \cdot \frac{\sqrt{3}}{2} + 2\sqrt{3}, \quad 4 \cdot 1 + 2\sqrt{3}\right] = \left(2\sqrt{3} + 2\sqrt{3}, \quad 4 + 2\sqrt{3}\right] = \left(4\sqrt{3}, 4+2\sqrt{3}\right]
+\]
+故 $\triangle AOC$ 周长的取值范围是 $(4\sqrt{3}, 4+2\sqrt{3}]$.\hfill\qedsymbol
+\end{prob-sol}

@@ -1,0 +1,25 @@
+\begin{prob}[topic={德摩根定律与一元二次不等式}, score=12]
+\textbf{(解答题)} 设全集 $U=\mathbb{R}$, 集合 $A=\{x\mid x \le -1 \text{ 或 } x \ge 4\}$, $B=\{x\mid x^2-3x-4<0\}$.
+\begin{enumerate}
+	\item 求集合 $B$；
+	\item 利用德摩根定律，求 $\complement_U(A \cap B)$.
+\end{enumerate}
+\end{prob}
+\begin{prob-sol}
+本题将德摩根定律与一元二次不等式的求解相结合.
+
+(1) \textbf{求集合 B}
+解不等式 $x^2-3x-4<0$。
+因式分解得 $(x-4)(x+1)<0$，解得 $-1 < x < 4$。
+\[ B=\{x \mid -1 < x < 4\} = (-1, 4) \]
+
+(2) \textbf{求 $\complement_U(A \cap B)$}
+直接计算 $A \cap B$ 再求补集较为繁琐，应用德摩根定律可以简化运算。
+\[ \complement_U(A \cap B) = (\complement_U A) \cup (\complement_U B) \]
+分别计算两个补集：
+\[ \complement_U A = \{x \mid \neg(x \le -1 \text{ 或 } x \ge 4)\} = \{x \mid -1 < x < 4\} = (-1, 4) \]
+\[ \complement_U B = \{x \mid \neg(-1 < x < 4)\} = \{x \mid x \le -1 \text{ 或 } x \ge 4\} = (-\infty, -1] \cup [4, \infty) \]
+求它们的并集：
+\[ (\complement_U A) \cup (\complement_U B) = (-1, 4) \cup \left( (-\infty, -1] \cup [4, \infty) \right) = \mathbb{R} \]
+因此，$\complement_U(A \cap B) = \mathbb{R}$。
+\end{prob-sol}

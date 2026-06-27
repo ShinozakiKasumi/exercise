@@ -1,0 +1,98 @@
+\begin{prob}[source={2023 年衡水中学第三次综合素养评价第 18 题}, topic={取值范围}]
+已知在 $\triangle ABC$ 的内角 $A,B,C$ 所对边分别为 $a,b,c$, 且 $a=b+2b\cos C$。
+\begin{enumerate}
+	\item[(1)] 求证: $C=2B$；
+	\item[(2)] 求 $\frac{a+c}{b}$ 的取值范围。
+\end{enumerate}
+\end{prob}
+\begin{prob-sol}
+题目给出的核心约束是关于边和角的满足式条件"$a=b+2b\cos C$.为了得到我们想要的关系，我们先利用正弦定理翻译起手，目的是将边长关系翻译为角度关系.
+
+由正弦定理，设 $a=k\sin A, b=k\sin B, c=k\sin C$.代入原式得：
+\[
+k\sin A = k\sin B + 2k\sin B \cos C
+\]
+由于 $k \neq 0$, 两边同除以 $k$ 得：
+\[
+\sin A = \sin B + 2\sin B \cos C
+\]
+在 $\triangle ABC$ 中, $A = \pi-(B+C)$, 故 $\sin A = \sin(\pi-(B+C)) = \sin(B+C)$.代入上式：
+\[
+\sin(B+C) = \sin B + 2\sin B \cos C
+\]
+展开左侧：
+\[
+\sin B \cos C + \cos B \sin C = \sin B + 2\sin B \cos C
+\]
+移项整理得：
+\[
+\cos B \sin C - \sin B \cos C = \sin B
+\]
+左侧恰为差角公式，即 $\sin(C-B) = \sin B$.
+
+由于 $B,C$ 均为三角形内角，故 $B \in (0,\pi), C \in (0,\pi)$.同时 $B+C \in (0,\pi)$, 可得 $C-B \in (-\pi, \pi)$.
+由 $\sin(C-B)=\sin B$ 可得两种可能：
+\begin{itemize}
+	\item $C-B = B$, 即 $C=2B$.
+	\item $C-B = \pi - B$, 即 $C=\pi$.矛盾.
+\end{itemize}
+因此， $C=2B$.至此，第 (1) 问得证.
+
+第 (1) 问的结论 $C=2B$ 极大地简化了问题，它将三角形形状的自由度从 2 降至 1.我们可以选择角 $B$ 作为唯一的自由参数来描述所有满足条件的三角形.
+
+首先，我们将所有角用参数 $B$ 表示，也即所谓的选定变量，或者说是归一思想：
+\[
+C=2B, \quad A = \pi - (B+C) = \pi - 3B
+\]
+为保证 $A,B,C$ 构成一个三角形，所有内角必须为正：
+\begin{align*}
+	B &> 0 \\
+	C = 2B &> 0 \quad (\text{当 } B>0 \text{ 时恒成立}) \\
+	A = \pi - 3B &> 0 \implies 3B < \pi \implies B < \frac{\pi}{3}
+\end{align*}
+综上，自由参数 $B$ 的取值范围是 $(0, \frac{\pi}{3})$.
+
+目标函数为 $\frac{a+c}{b}$.我们再次利用正弦定理，将其翻译为角度的表达式：
+\[
+\frac{a+c}{b} = \frac{k\sin A + k\sin C}{k\sin B} = \frac{\sin A + \sin C}{\sin B}
+\]
+将所有角用参数 $B$ 代入：
+\[
+f(B) = \frac{\sin(\pi-3B)+\sin(2B)}{\sin B}
+\]
+由于 $B \in (0, \frac{\pi}{3})$, $\sin B \neq 0$，我们可以进行化简：
+\[
+f(B) = \frac{\sin(3B)+\sin(2B)}{\sin B}
+\]
+利用和差化积公式或三倍角、二倍角公式展开.这里使用后者更为直接：
+\begin{align*}
+	f(B) &= \frac{(3\sin B - 4\sin^3 B) + (2\sin B \cos B)}{\sin B} \\
+	&= 3 - 4\sin^2 B + 2\cos B
+\end{align*}
+
+为了求 $f(B)$ 的范围，我们将其转化为关于单一三角函数变量的代数式.
+令 $t = \cos B$.首先确定新变量 $t$ 的范围.
+因为 $B \in (0, \frac{\pi}{3})$ 且 $y=\cos x$ 在此区间上单调递减，所以：
+\[
+t = \cos B \in \left(\cos\frac{\pi}{3}, \cos 0\right) = \left(\frac{1}{2}, 1\right)
+\]
+将原表达式中的 $\sin^2 B$ 替换为 $1-\cos^2 B = 1-t^2$：
+\begin{align*}
+	g(t) &= 3 - 4(1-t^2) + 2t \\
+	&= 3 - 4 + 4t^2 + 2t \\
+	&= 4t^2 + 2t - 1
+\end{align*}
+问题最终转化为：求二次函数 $g(t) = 4t^2+2t-1$ 在开区间 $t \in (\frac{1}{2}, 1)$ 上的值域.
+
+这是一个开口向上的抛物线，对称轴为 $t = -\frac{2}{2 \times 4} = -\frac{1}{4}$.
+由于区间 $(\frac{1}{2}, 1)$ 完全位于对称轴的右侧，所以函数 $g(t)$ 在此区间上是严格单调递增的.
+
+因此，值域的边界由区间端点决定：
+\begin{itemize}
+	\item 当 $t \to \frac{1}{2}^+$ 时, $g(t) \to 4(\frac{1}{2})^2 + 2(\frac{1}{2}) - 1 = 1+1-1=1$.
+	\item 当 $t \to 1^-$ 时, $g(t) \to 4(1)^2 + 2(1) - 1 = 4+2-1=5$.
+\end{itemize}
+由于 $t$ 的取值范围是开区间，所以函数值的范围也是开区间.
+
+最终，$\frac{a+c}{b}$ 的取值范围是 $(1, 5)$.\hfill\qedsymbol
+\end{prob-sol}

@@ -1,0 +1,89 @@
+\begin{prob}[source={2023 浙江省十校联盟第三次联考第 18 题}, topic={面积问题}]
+在 $\triangle ABC$ 中, $D$ 为边 $BC$ 上一点, $DC = 3, AD = 5, AC = 7, \angle DAC = \angle ABC$。
+\begin{enumerate}
+	\item[(1)] 求 $\angle ADC$ 的大小；
+	\item[(2)] 求 $\triangle ABC$ 的面积。
+\end{enumerate}
+\end{prob}
+\begin{prob-sol}
+\textbf{1. 求 $\angle ADC$}
+
+本题要我们求 $\triangle ADC$.题目直接给出了这个三角形的三条边长：$AD=5, DC=3, AC=7$.当一个三角形的三边确定时，其形状和所有内角也随之完全确定.
+
+先应用余弦定理来求解 $\angle ADC$.在 $\triangle ADC$ 中：
+\[
+AC^2 = AD^2 + DC^2 - 2(AD)(DC)\cos(\angle ADC)
+\]
+代入已知数据：
+\[
+7^2 = 5^2 + 3^2 - 2(5)(3)\cos(\angle ADC)
+\]
+\[
+49 = 25 + 9 - 30\cos(\angle ADC)
+\]
+\[
+49 = 34 - 30\cos(\angle ADC)
+\]
+整理得到：
+\[
+15 = -30\cos(\angle ADC) \implies \cos(\angle ADC) = -\frac{1}{2}
+\]
+由于 $\angle ADC$ 是三角形的内角，其范围为 $(0, \pi)$，因此 $\angle ADC = \frac{2\pi}{3}$.
+
+\textbf{2. 求 $\triangle ABC$ 面积}
+
+为求 $\triangle ABC$ 的面积，我们需要确定更多的边或角.关键在于利用连接两个三角形的条件 $\angle DAC = \angle ABC$.
+
+令 $\angle ABC = B$, 则 $\angle DAC = B$.
+在 $\triangle ADC$ 中，我们已知三边和一角，可以利用正弦定理求出 $\sin B$：
+\[
+\frac{AC}{\sin(\angle ADC)} = \frac{DC}{\sin(\angle DAC)}
+\]
+\[
+\frac{7}{\sin(2\pi/3)} = \frac{3}{\sin B} \implies \sin B = \frac{3\sin(2\pi/3)}{7} = \frac{3(\sqrt{3}/2)}{7} = \frac{3\sqrt{3}}{14}
+\]
+
+现在我们的焦点转移到 $\triangle ABD$.
+我们知道 $\angle ADC = \frac{2\pi}{3}$, 故其补角 $\angle ADB = \pi - \frac{2\pi}{3} = \frac{\pi}{3}$.
+在 $\triangle ABD$ 中，我们已知：
+\begin{itemize}
+	\item 边 $AD = 5$
+	\item 角 $\angle ABD = B$
+	\item 角 $\angle ADB = \frac{\pi}{3}$
+\end{itemize}
+第三个角为 $\angle BAD = \pi - B - \frac{\pi}{3} = \frac{2\pi}{3}-B$.
+应用正弦定理于 $\triangle ABD$：
+\[
+\frac{AB}{\sin(\angle ADB)} = \frac{BD}{\sin(\angle BAD)} = \frac{AD}{\sin(\angle ABD)}
+\]
+\[
+\frac{AB}{\sin(\pi/3)} = \frac{BD}{\sin(2\pi/3 - B)} = \frac{5}{\sin B}
+\]
+由此可解得边长 $BD$：
+\[
+BD = \frac{5\sin(2\pi/3 - B)}{\sin B}
+\]
+为计算此值，我们需要 $\cos B$.由于 $\triangle ABC$ 中 $D$ 在 $BC$ 边上，则 $C = \angle ACD$ 必为锐角（否则 $C+\angle ADC \ge \pi$），故 $\angle DAC = B$ 也必为锐角.因此 $\cos B > 0$.
+\[
+\cos B = \sqrt{1-\sin^2 B} = \sqrt{1 - \left(\frac{3\sqrt{3}}{14}\right)^2} = \sqrt{1-\frac{27}{196}} = \sqrt{\frac{169}{196}} = \frac{13}{14}
+\]
+展开 $\sin(2\pi/3 - B)$：
+\begin{align*}
+	BD &= \frac{5(\sin(2\pi/3)\cos B - \cos(2\pi/3)\sin B)}{\sin B} \\
+	&= \frac{5((\sqrt{3}/2)(13/14) - (-1/2)(3\sqrt{3}/14))}{3\sqrt{3}/14} \\
+	&= \frac{5(13\sqrt{3}/28 + 3\sqrt{3}/28)}{3\sqrt{3}/14} = \frac{5(16\sqrt{3}/28)}{3\sqrt{3}/14} = \frac{5(4\sqrt{3}/7)}{3\sqrt{3}/14} = \frac{20\sqrt{3}}{7} \cdot \frac{14}{3\sqrt{3}} = \frac{40}{3}
+\end{align*}
+
+接下来，计算面积即可，$\triangle ABC$ 的面积等于 $\triangle ABD$ 与 $\triangle ADC$ 的面积之和.
+\[
+S_{\triangle ADC} = \frac{1}{2}AD \cdot DC \sin(\angle ADC) = \frac{1}{2}(5)(3)\sin\left(\frac{2\pi}{3}\right) = \frac{15}{2} \cdot \frac{\sqrt{3}}{2} = \frac{15\sqrt{3}}{4}
+\]
+\[
+S_{\triangle ABD} = \frac{1}{2}AD \cdot BD \sin(\angle ADB) = \frac{1}{2}(5)\left(\frac{40}{3}\right)\sin\left(\frac{\pi}{3}\right) = \frac{100}{3} \cdot \frac{\sqrt{3}}{2} = \frac{50\sqrt{3}}{3}
+\]
+总面积为：
+\[
+S_{\triangle ABC} = S_{\triangle ADC} + S_{\triangle ABD} = \frac{15\sqrt{3}}{4} + \frac{50\sqrt{3}}{3} = \sqrt{3}\left(\frac{45+200}{12}\right) = \frac{245\sqrt{3}}{12}
+\]
+	故 $\triangle ABC$ 的面积为 $\frac{245\sqrt{3}}{12}$.\hfill\qedsymbol
+\end{prob-sol}

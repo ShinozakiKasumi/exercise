@@ -1,0 +1,22 @@
+\begin{prob}[topic={集合的并集与补集运算}, score=5]
+\textbf{(填空题)} 已知全集 $U=\{x \in \mathbb{Z} \mid -3 \le x \le 3\}$, 集合 $A=\{-2, 1, 2\}$, $B=\{-1, 0, 1\}$. 求 $\complement_U(A \cup B) = $ \rule{3cm}{0.5pt}.
+\end{prob}
+\begin{prob-sol}
+\textbf{答案} $\{-3, 3\}$
+
+本题考查有限集合的补集运算.
+
+\textbf{方法一：直接法}
+首先确定全集 $U$ 和并集 $A \cup B$。
+\[ U = \{-3, -2, -1, 0, 1, 2, 3\} \]
+\[ A \cup B = \{-2, 1, 2\} \cup \{-1, 0, 1\} = \{-2, -1, 0, 1, 2\} \]
+$\complement_U(A \cup B)$ 即为在 $U$ 中但不在 $A \cup B$ 中的元素所构成的集合.
+\[ \complement_U(A \cup B) = \{-3, 3\} \]
+
+\textbf{方法二：德摩根定律}
+根据德摩根定律，$\complement_U(A \cup B) = (\complement_U A) \cap (\complement_U B)$。
+\[ \complement_U A = \{-3, -1, 0, 3\} \]
+\[ \complement_U B = \{-3, -2, 2, 3\} \]
+两补集的交集为：
+\[ (\complement_U A) \cap (\complement_U B) = \{-3, 3\} \]
+\end{prob-sol}

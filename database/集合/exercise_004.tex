@@ -1,0 +1,25 @@
+\begin{prob}[topic={容斥原理的逆向应用}, score=12]
+\textbf{(解答题)} 某次考试中，50名学生参加了数学和物理两科.已知数学成绩及格的有40人，物理成绩及格的有31人，两科都不及格的有4人.问这次考试中：
+\begin{enumerate}
+	\item 两科都及格的学生有多少人？
+	\item 恰好只有一科及格的学生有多少人？
+\end{enumerate}
+\end{prob}
+\begin{prob-sol}
+本题是容斥原理的逆向和综合应用.
+设数学及格的集合为 $M$，物理及格的集合为 $P$。
+已知信息：
+\[ \lvert U\rvert=50, \quad \lvert M\rvert=40, \quad \lvert P\rvert=31 \]
+``两科都不及格''的人数为 4，即 $\lvert\complement_U(M \cup P)\rvert=4$。
+
+(1) \textbf{求两科都及格的人数}，即求 $\lvert M \cap P\rvert$。
+首先，由补集信息计算至少有一科及格的人数 $\lvert M \cup P\rvert$。
+\[ \lvert M \cup P\rvert = \lvert U\rvert - \lvert\complement_U(M \cup P)\rvert = 50 - 4 = 46 \]
+再根据容斥原理 $\lvert M \cup P\rvert = \lvert M\rvert + \lvert P\rvert - \lvert M \cap P\rvert$，可得：
+\[ 46 = 40 + 31 - \lvert M \cap P\rvert \]
+\[ \lvert M \cap P\rvert = 71 - 46 = 25 \text{ (人)} \]
+
+(2) \textbf{求恰好只有一科及格的人数}.
+这部分学生等于``至少一科及格''的人数减去``两科都及格''的人数。
+\[ \lvert(M \cup P) \setminus (M \cap P)\rvert = \lvert M \cup P\rvert - \lvert M \cap P\rvert = 46 - 25 = 21 \text{ (人)} \]
+\end{prob-sol}

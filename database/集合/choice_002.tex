@@ -1,0 +1,25 @@
+\begin{choice}[source={2023 秋 · 高一 · 重庆永川区 · 月考校考}, topic={集合的补集与交集}]
+设集合 $A=\{x\mid x<2 \text{或} x \ge 4\}$, $B=\{x\mid x<a\}$，若 $(\complement_U A) \cap B \neq \emptyset$，则 $a$ 的取值范围是
+\begin{tasks}(2)
+	\task $a < 2$
+	\task $a > 2$
+	\task $a \le 4$
+	\task $a \ge 4$
+\end{tasks}
+\end{choice}
+\begin{choice-sol}
+\textbf{答案 B}
+
+本题的核心思想是将抽象的集合运算转化为直观的数轴位置关系.
+首先，根据集合 $A$ 的定义，确定其在全集 $U=\mathbb{R}$ 下的补集。
+\[ A = \{x\mid x<2 \text{ 或 } x \ge 4\} = (-\infty, 2) \cup [4, +\infty) \]
+其补集为数轴上未被覆盖的部分：
+\[ \complement_U A = \{x\mid 2 \le x < 4\} = [2, 4) \]
+集合 $B$ 的定义为：
+\[ B = \{x\mid x<a\} = (-\infty, a) \]
+题目条件为 $(\complement_U A) \cap B \neq \emptyset$，
+即区间 $[2, 4)$ 与 $(-\infty, a)$ 的交集不为空.
+为满足此条件，区间 $(-\infty, a)$ 的右端点 $a$
+必须大于区间 $[2,4)$ 的左端点 $2$.
+因此，可得 $a > 2$。
+\end{choice-sol}

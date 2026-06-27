@@ -1,0 +1,36 @@
+\begin{prob}[topic={三集合容斥原理}, score=12]
+\textbf{(解答题)} 某新闻机构就A, B, C三个热点话题对100人进行调查，结果显示：关注A的有45人，B的有55人，C的有60人；同时关注A和B的有25人，A和C的有20人，B和C的有30人；三个话题都关注的有10人.问：
+\begin{enumerate}
+	\item 至少关注一个话题的人数是多少？
+	\item 恰好只关注一个话题的人数是多少？
+\end{enumerate}
+\end{prob}
+\begin{prob-sol}
+本题是三集合容斥原理的经典应用.
+设关注 A, B, C 话题的人构成的集合分别为 $A, B, C$。
+已知信息：
+\[ \lvert A\rvert=45, \quad \lvert B\rvert=55, \quad \lvert C\rvert=60 \]
+\[ \lvert A \cap B\rvert=25, \quad \lvert A \cap C\rvert=20, \quad \lvert B \cap C\rvert=30 \]
+\[ \lvert A \cap B \cap C\rvert=10 \]
+
+(1) \textbf{求至少关注一个话题的人数}，即求 $\lvert A \cup B \cup C\rvert$。
+应用三集合容斥原理公式：
+\begin{align*}
+	\lvert A \cup B \cup C\rvert &= (\lvert A\rvert+\lvert B\rvert+\lvert C\rvert) - (\lvert A \cap B\rvert+\lvert A \cap C\rvert+\lvert B \cap C\rvert) + \lvert A \cap B \cap C\rvert \\
+	&= (45+55+60) - (25+20+30) + 10 \\
+	&= 160 - 75 + 10 \\
+	&= 95 \text{ (人)}
+\end{align*}
+
+(2) \textbf{求恰好只关注一个话题的人数}.
+这部分人数等于只关注 A，只关注 B，只关注 C 的人数之和.
+
+只关注A的人数：
+\[ \lvert A \setminus (B \cup C)\rvert = \lvert A\rvert - \lvert A \cap B\rvert - \lvert A \cap C\rvert + \lvert A \cap B \cap C\rvert = 45 - 25 - 20 + 10 = 10 \text{ (人)} \]
+只关注B的人数：
+\[ \lvert B \setminus (A \cup C)\rvert = \lvert B\rvert - \lvert A \cap B\rvert - \lvert B \cap C\rvert + \lvert A \cap B \cap C\rvert = 55 - 25 - 30 + 10 = 10 \text{ (人)} \]
+只关注C的人数：
+\[ \lvert C \setminus (A \cup B)\rvert = \lvert C\rvert - \lvert A \cap C\rvert - \lvert B \cap C\rvert + \lvert A \cap B \cap C\rvert = 60 - 20 - 30 + 10 = 20 \text{ (人)} \]
+
+总人数为 $10 + 10 + 20 = 40$ (人).
+\end{prob-sol}

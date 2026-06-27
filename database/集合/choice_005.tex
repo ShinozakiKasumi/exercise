@@ -1,0 +1,23 @@
+\begin{choice}[topic={全称命题的否定}]
+若命题 ``$\forall x \in \mathbb{R}, 1-x^2 \le m$'' 是假命题，则实数 $m$ 的取值范围是
+\begin{tasks}(2)
+	\task $(-\infty, 1)$
+	\task $(-\infty, 1]$
+	\task $(1, +\infty)$
+	\task $[1, +\infty)$
+\end{tasks}
+\end{choice}
+\begin{choice-sol}
+\textbf{答案 A}
+
+一个全称量词命题为假，其逻辑等价于它的否定形式（一个存在量词命题）为真.
+设原命题为 $P: \forall x \in \mathbb{R}, 1-x^2 \le m$。
+
+由于命题 $P$ 为假，其否定命题 $\neg P$ 必为真.
+\[ \neg P: \exists x \in \mathbb{R}, \neg(1-x^2 \le m) \implies \exists x \in \mathbb{R}, 1-x^2 > m \]
+该存在量词命题为真，意味着 $m$ 必须小于函数 $f(x) = 1-x^2$ 的最大值.
+函数 $f(x)=1-x^2$ 是一个开口向下的二次函数，其顶点为最大值点.
+\[ f(x)_{\max} = f(0) = 1 \]
+因此，实数 $m$ 的取值范围必须是 $m < 1$，
+即 $m \in (-\infty, 1)$。
+\end{choice-sol}

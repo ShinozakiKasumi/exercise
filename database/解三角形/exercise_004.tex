@@ -1,0 +1,103 @@
+\begin{prob}[topic={锐角三角形的取值范围}, score=12]
+在锐角 $\triangle ABC$ 中, 角 $A, B, C$ 所对应的边分别为 $a, b, c$, 已知 $\frac{\sin A - \sin B}{\sqrt{3}a - c} = \frac{\sin C}{a+b}$。
+\begin{enumerate}
+	\item[(1)] 求角 $B$ 的值；
+	\item[(2)] 若 $a=2$, 求 $\triangle ABC$ 的周长的取值范围。
+\end{enumerate}
+\end{prob}
+\begin{prob-sol}
+\textbf{1. 求角$B$.}
+
+题目给出的条件是一个混合了边与角的复杂比例式.我们的首要策略是利用正弦定理，将所有三角函数项统一替换为边长，从而将问题转化为纯粹的代数关系式，以揭示约束条件.
+
+由正弦定理，$\sin A = \frac{a}{2R}, \sin B = \frac{b}{2R}, \sin C = \frac{c}{2R}$.代入原式：
+\[
+\frac{\frac{a}{2R} - \frac{b}{2R}}{\sqrt{3}a - c} = \frac{\frac{c}{2R}}{a+b}
+\]
+消去公因式 $\frac{1}{2R}$，我们得到：
+\[
+\frac{a-b}{\sqrt{3}a - c} = \frac{c}{a+b}
+\]
+通过交叉相乘，将比例式转化为等式：
+\[
+(a-b)(a+b) = c(\sqrt{3}a - c)
+\]
+展开得：
+\[
+a^2 - b^2 = \sqrt{3}ac - c^2
+\]
+移项，整理成余弦定理的形式：
+\[
+a^2 + c^2 - b^2 = \sqrt{3}ac
+\]
+根据余弦定理，我们知道 $a^2 + c^2 - b^2 = 2ac\cos B$.于是：
+\[
+2ac\cos B = \sqrt{3}ac
+\]
+由于 $a,c$ 是三角形的边长，必为正数，可约去 $2ac$：
+\[
+\cos B = \frac{\sqrt{3}}{2}
+\]
+因为 $B$ 是三角形内角，所以 $B = \frac{\pi}{6}$.这个值满足锐角三角形中 $B \in (0, \frac{\pi}{2})$ 的要求.
+
+\textbf{2. 求解周长的取值范围}
+
+第 (1) 问固定了角 $B=\frac{\pi}{6}$，第 (2) 问又给定了边 $a=2$.此时，三角形的自由度仅剩一个.我们可以选择一个角（例如角 $A$）作为自由参数，来表达周长并确定其范围.
+
+我们选择角 $A$ 为参数.$\triangle ABC$ 是锐角三角形，因此所有角都必须在 $(0, \frac{\pi}{2})$ 内.
+\begin{itemize}
+	\item $A \in (0, \frac{\pi}{2})$
+	\item $B = \frac{\pi}{6} \in (0, \frac{\pi}{2})$ 
+	\item $C = \pi - (A+B) = \pi - (A+\frac{\pi}{6}) = \frac{5\pi}{6} - A \in (0, \frac{\pi}{2})$
+\end{itemize}
+从 $C$ 的范围我们可以得到对 $A$ 的两个约束：
+\begin{itemize}
+	\item $\frac{5\pi}{6} - A > 0 \implies A < \frac{5\pi}{6}$.此条件被 $A < \pi/2$ 包含.
+	\item $\frac{5\pi}{6} - A < \frac{\pi}{2} \implies \frac{5\pi}{6} - \frac{3\pi}{6} < A \implies A > \frac{2\pi}{6} = \frac{\pi}{3}$.
+\end{itemize}
+综上，参数 $A$ 的取值范围是 $(\frac{\pi}{3}, \frac{\pi}{2})$.
+
+确定完后，我们看看周长 $P = a+b+c = 2+b+c$，利用正弦定理将 $b,c$ 用参数 $A$ 表示.
+\[
+\frac{a}{\sin A} = \frac{b}{\sin B} = \frac{c}{\sin C} \implies \frac{2}{\sin A} = \frac{b}{\sin(\pi/6)} = \frac{c}{\sin(5\pi/6 - A)}
+\]
+解得：
+\[
+b = \frac{2\sin(\pi/6)}{\sin A} = \frac{1}{\sin A}
+\]
+\[
+c = \frac{2\sin(5\pi/6 - A)}{\sin A}
+\]
+所以，周长 $P$ 是关于 $A$ 的函数：
+\begin{align*}
+	P(A) &= 2 + \frac{1}{\sin A} + \frac{2\sin(5\pi/6 - A)}{\sin A} \\
+	&= 2 + \frac{1 + 2\left(\sin\frac{5\pi}{6}\cos A - \cos\frac{5\pi}{6}\sin A\right)}{\sin A} \\
+	&= 2 + \frac{1 + 2\left(\frac{1}{2}\cos A + \frac{\sqrt{3}}{2}\sin A\right)}{\sin A} \\
+	&= 2 + \frac{1 + \cos A + \sqrt{3}\sin A}{\sin A} \\
+	&= 2 + \frac{1+\cos A}{\sin A} + \sqrt{3}
+\end{align*}
+
+化简，然后分析函数 $g(A) = \frac{1+\cos A}{\sin A}$.利用半角公式，简单期间，设$\cot A/2 = \frac{1}{\tan A/2}$，这里用到余切函数了，当然你换个元也是一样的效果.
+\[
+g(A) = \frac{2\cos^2(A/2)}{2\sin(A/2)\cos(A/2)} = \cot(A/2)
+\]
+因此，周长函数为 $P(A) = 2 + \sqrt{3} + \cot(A/2)$.
+
+注意道当 $A \in (\frac{\pi}{3}, \frac{\pi}{2})$ 时，
+\[
+A \in \left(\frac{\pi}{3}, \frac{\pi}{2}\right) \implies \frac{A}{2} \in \left(\frac{\pi}{6}, \frac{\pi}{4}\right)
+\]
+函数 $y = \cot x$ 在区间 $(\frac{\pi}{6}, \frac{\pi}{4})$ 上是单减.
+因此，函数的值域由区间端点决定：
+\begin{itemize}
+	\item 当 $\frac{A}{2} \to \frac{\pi}{6}^+$ 时，$\cot(\frac{A}{2}) \to \cot(\frac{\pi}{6}) = \sqrt{3}$.
+	\item 当 $\frac{A}{2} \to \frac{\pi}{4}^-$ 时，$\cot(\frac{A}{2}) \to \cot(\frac{\pi}{4}) = 1$.
+\end{itemize}
+所以，$\cot(A/2)$ 的取值范围是 $(1, \sqrt{3})$.
+
+综上，周长 $P(A) = 2+\sqrt{3} + \cot(A/2)$ 的取值范围是：
+\[
+\left(2+\sqrt{3} + 1, \quad 2+\sqrt{3} + \sqrt{3}\right) = \left(3+\sqrt{3}, 2+2\sqrt{3}\right)
+\]
+故 $\triangle ABC$ 周长的取值范围是 $(3+\sqrt{3}, 2+2\sqrt{3})$.\hfill\qedsymbol
+\end{prob-sol}

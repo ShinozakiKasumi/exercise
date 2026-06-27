@@ -1,0 +1,21 @@
+\begin{prob}[topic={容斥原理初步应用}, score=10]
+\textbf{(解答题)} 某班有50名学生，参加数学兴趣小组的有25人，参加物理兴趣小组的有22人，两个小组都参加的有10人.问：
+\begin{enumerate}
+	\item 至少参加一个兴趣小组的学生有多少人？
+	\item 两个小组都没有参加的学生有多少人？
+\end{enumerate}
+\end{prob}
+\begin{prob-sol}
+本题是容斥原理的直接应用.
+设参加数学兴趣小组的学生集合为 $M$，
+参加物理兴趣小组的学生集合为 $P$。
+根据题意，已知信息为：
+\[ \lvert M\rvert = 25, \quad \lvert P\rvert = 22, \quad \lvert M \cap P\rvert = 10 \]
+(1) \textbf{至少参加一个兴趣小组的人数}，即求 $\lvert M \cup P\rvert$。
+根据容斥原理公式：
+\[ \lvert M \cup P\rvert = \lvert M\rvert + \lvert P\rvert - \lvert M \cap P\rvert = 25 + 22 - 10 = 37 \text{ (人)} \]
+
+(2) \textbf{两个小组都没有参加的人数}.
+设全班学生为全集 $U$，则所求人数为 $\lvert\complement_U(M \cup P)\rvert$。
+\[ \lvert\complement_U(M \cup P)\rvert = \lvert U\rvert - \lvert M \cup P\rvert = 50 - 37 = 13 \text{ (人)} \]
+\end{prob-sol}

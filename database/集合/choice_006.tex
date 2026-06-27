@@ -1,0 +1,39 @@
+\begin{choice}[topic={充分不必要条件的应用}]
+若 ``$x=2$'' 是 ``$m^2x^2 - (m+3)x + 4 = 0$'' 的充分不必要条件，则实数 $m$ 的值为
+\begin{tasks}(2)
+	\task 1
+	\task $-\frac{1}{2}$
+	\task $-\frac{1}{2}$ 或 1
+	\task -1 或 $-\frac{1}{2}$
+\end{tasks}
+\end{choice}
+\begin{choice-sol}
+\textbf{答案 B}
+
+命题``$p$ 是 $q$ 的充分不必要条件''包含两层含义，必须同时满足：
+\begin{itemize}
+	\item \textbf{充分性}: $p \Rightarrow q$。
+	\item \textbf{不必要性}: $q \not\Rightarrow p$。
+\end{itemize}
+设 $p: x=2$，$q: m^2x^2 - (m+3)x + 4 = 0$。
+
+\textbf{检验充分性}:
+将 $x=2$ 代入方程 $q$ 中，方程必须成立.
+\[ 4m^2 - 2(m+3) + 4 = 0 \implies 2m^2 - m - 1 = 0 \]
+因式分解得 $(2m+1)(m-1) = 0$，
+解得 $m=1$ 或 $m=-\frac{1}{2}$。
+
+\textbf{检验不必要性}:
+方程 $q$ 的解集 $S$ 必须真包含 $\{2\}$，即 $S \neq \{2\}$。
+\begin{itemize}
+	\item 当 $m=1$ 时，方程为 $x^2 - 4x + 4 = 0$，
+	解集 $S=\{2\}$.
+	此时 $q \Rightarrow p$ 成立，不满足``不必要''条件，故舍去.
+	\item 当 $m=-\frac{1}{2}$ 时，
+	方程为 $\frac{1}{4}x^2 - \frac{5}{2}x + 4 = 0$，
+	即 $x^2 - 10x + 16 = 0$.
+	解集 $S=\{2, 8\}$.
+	此时 $S \neq \{2\}$，满足``不必要''条件。
+\end{itemize}
+综上，唯一满足条件的实数 $m$ 的值为 $-\frac{1}{2}$。
+\end{choice-sol}

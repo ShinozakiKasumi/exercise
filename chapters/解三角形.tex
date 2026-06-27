@@ -1,0 +1,64 @@
+\chapter{解三角形}
+
+%% ---- 知识框架 ---- %%
+\begin{knowledgeframe}
+\textbf{核心解题思路：多变量 → 单变量 → 求最值}
+\begin{itemize}
+	\item \textbf{边化角}：若表达式含边或边的比例，优先使用正弦定理（$a=2R\sin A$ 等），将边长转化为角的正弦。
+	\item \textbf{边化角（余弦路径）}：若表达式含边的平方，或已知条件为 SAS / SSS，则余弦定理是首选。
+	\item \textbf{消元}：利用内角和 $A+B+C=\pi$ 消去多余的角变量。
+	\item \textbf{定义域}：三角形内角 $\in (0, \pi)$；附加约束如"锐角""钝角"需额外限制。
+	\item \textbf{求最值工具}：辅助角公式、二次函数配方法、求导。
+\end{itemize}
+\end{knowledgeframe}
+
+%% ---- 第一节：取值范围 ---- %%
+\section{取值范围}
+
+\subsection*{知识回顾}
+
+解决问题的第一步，是将题目中多变量换成单变量. 这是化繁为简、确立解题方向的关键.
+\begin{itemize}
+	\item \textbf{若表达式含边或边的比例}，优先考虑使用\textbf{正弦定理} ($a=2R\sin A, b=2R\sin B, \dots$)，将边长转化为对应角的正弦，实现"\textbf{边化角}"。
+	\item \textbf{若表达式含边的平方}，或已知条件为"两边一夹角" (SAS) / "三边" (SSS)，则\textbf{余弦定理}是构造关系式的不二之选。
+	\item \textbf{利用内角和定理} $A+B+C=\pi$ 消去多余的角变量，是实现"变量化归"的最后一步。
+\end{itemize}
+
+牢记定义域，这是最关键也最容易被忽略的一步. 三角形中的角并非任意取值，其范围受到严格的内在约束.
+\begin{itemize}
+	\item \textbf{基本约束}：三角形的任意内角都必须在 $(0, \pi)$ 范围内。
+	\item \textbf{结构约束}：例如，若已将其他角用变量角 $B$ 表示为 $A=\frac{\pi}{2}-2B, C=\frac{\pi}{2}+B$，则必须同时满足 $B>0, A>0, C>0$.
+\end{itemize}
+
+\startexercise
+
+\subsection*{习题集}
+
+\input{database/解三角形/exercise_001}
+\input{database/解三角形/exercise_002}
+\input{database/解三角形/exercise_003}
+\input{database/解三角形/exercise_004}
+
+\stopexercise
+
+%% ---- 第二节：面积问题 ---- %%
+\section{面积问题}
+
+\startexercise
+
+\subsection*{习题集}
+
+\input{database/解三角形/exercise_005}
+
+\stopexercise
+
+%% ---- 第三节：解三角形综合 ---- %%
+\section{解三角形综合}
+
+\startexercise
+
+\subsection*{习题集}
+
+\input{database/解三角形/exercise_006}
+
+\stopexercise
